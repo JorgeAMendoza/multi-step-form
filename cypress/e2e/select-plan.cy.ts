@@ -5,6 +5,7 @@ describe('Select a plan form section', () => {
     cy.visit('http://localhost:3000')
     cy.completePersonalInfoStep()
     cy.get('[data-test="selectPlan"]').as('selectPlan')
+    cy.get('[data-test="formSteps"]').as('formSteps')
     cy.get('[data-test="arcadePlanInput"]').as('arcadePlan')
     cy.get('[data-test="advancedPlanInput"]').as('advancedPlan')
     cy.get('[data-test="proPlanInput"]').as('proPlan')
@@ -16,6 +17,10 @@ describe('Select a plan form section', () => {
   it('default plan of arcade and montly subscription should be selected', () => {
     cy.get('@aracePlan').should('be.checked')
     cy.get('@montlySub').should('be.checked')
+
+    cy.get('@formSteps')
+      .find('[data-active="true"]')
+      .should('contain', 'SELECT PLAN')
   })
 
   it('should be able to select advanced plan', () => {

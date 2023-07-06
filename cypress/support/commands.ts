@@ -38,16 +38,23 @@
 
 // create steps for completing a step of the form
 Cypress.Commands.add('completePersonalInfoStep', () => {
-  cy.get('[data-test="nameInput"]').type('Test Name')
-  cy.get('[data-test="emailInput"]').type('testmeail@gmail.com')
-  cy.get('[data-test="phoneInput"]').type('1234567890')
-  cy.get('[data-test="nextButton"]').click()
+  cy.get('[data-testid="nameInput"]').type('Test Name')
+  cy.get('[data-testid="emailInput"]').type('testmeail@gmail.com')
+  cy.get('[data-testid="phoneInput"]').type('1234567890')
+  cy.get('[data-testid="nextButton"]').click()
 })
 
 Cypress.Commands.add('completePlanStep', () => {
-  cy.get('[data-test=""arcadePlanInput]').click()
-  cy.get('[data-test="montlySubInput"]').click()
-  cy.get('[data-test="nextButton"]').click()
+  cy.get('[data-testid=""arcadePlanInput]').click()
+  cy.get('[data-testid="montlySubInput"]').click()
+  cy.get('[data-testid="nextButton"]').click()
+})
+
+Cypress.Commands.add('completeAddOnsStep', () => {
+  cy.get('[data-testid="onlineServiceInput"]').click()
+  cy.get('[data-testid="largerStorageInput"]').click()
+  cy.get('[data-testid="customProfileInput"]').click()
+  cy.get('[data-testid="nextButton"]').click()
 })
 
 declare global {
@@ -56,6 +63,7 @@ declare global {
     interface Chainable {
       completePersonalInfoStep(): Chainable<void>
       completePlanStep(): Chainable<void>
+      completeAddOnsStep(): Chainable<void>
     }
   }
 }
