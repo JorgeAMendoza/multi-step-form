@@ -1,4 +1,4 @@
-import TextInput from '../FormInput/TextInput.tsx'
+import TextInput from '../../FormInput/TextInput.tsx'
 const PersonalInfo = () => {
   return (
     <div>

@@ -84,4 +84,19 @@ describe('Personal info form section', () => {
     cy.get('@formStepTitle').should('contain', 'Select your plan')
     cy.get('@personalInfo').should('not.exist')
   })
+
+  it('should be able to leave page and come back with the same data in the form', () => {
+    cy.get('@nameInput').type('test')
+    cy.get('@emailInput').type('testemail@gmail.com')
+    cy.get('@phoneInput').type('1234567890')
+    cy.get('@nextButton').click()
+
+    cy.get('@personalInfo').should('not.exist')
+    cy.get('[data-testid="previousButton"]').click()
+    cy.get('@personalInfo').should('exist')
+
+    cy.get('@nameInput').should('have.value', 'test')
+    cy.get('@emailInput').should('have.value', 'testemail@gmail.com')
+    cy.get('@phoneInput').should('have.value', '1234567890')
+  })
 })
