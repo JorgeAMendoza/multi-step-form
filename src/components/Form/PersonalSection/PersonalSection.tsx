@@ -32,18 +32,35 @@ const PersonalInfo = () => {
           name="name"
           placeholder="e.g. Stephen King"
           type="text"
+          rules={{
+            required: { value: true, message: 'This field is required' },
+          }}
         />
         <TextInput
           control={control}
           name="email"
           placeholder="e.g. stephenking@lorem.com"
           type="email"
+          rules={{
+            required: { value: true, message: 'This field is required' },
+            pattern: {
+              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: 'Please enter a valid email address',
+            },
+          }}
         />
         <TextInput
           control={control}
           name="phoneNumber"
           placeholder="e.g. +1 234 567 890"
           type="tel"
+          rules={{
+            required: { value: true, message: 'This field is required' },
+            pattern: {
+              value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+              message: 'Please enter a valid phone number',
+            },
+          }}
         />
         <button type="submit">Next</button>
       </form>

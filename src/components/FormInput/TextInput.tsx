@@ -8,6 +8,8 @@ type TextInputProps = UseControllerProps<PersonalInfoForm> & {
 
 const TextInput = (props: TextInputProps) => {
   const { field, fieldState } = useController(props)
+  console.log(props.name)
+
   return (
     <div>
       <div>
@@ -20,7 +22,13 @@ const TextInput = (props: TextInputProps) => {
           />
         </label>
 
-        {fieldState.invalid ? <p>something is wrong</p> : null}
+        {fieldState.isTouched && fieldState.invalid ? (
+          <p>
+            {fieldState.error?.message
+              ? fieldState.error.message
+              : 'Invalid input'}
+          </p>
+        ) : null}
       </div>
     </div>
   )
