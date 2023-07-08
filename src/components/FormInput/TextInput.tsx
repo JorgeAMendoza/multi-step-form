@@ -3,6 +3,7 @@ import type { PersonalInfoForm } from '../Form/PersonalSection/PersonalSection.t
 
 type TextInputProps = UseControllerProps<PersonalInfoForm> & {
   placeholder?: string
+  type: 'text' | 'email' | 'tel'
 }
 
 const TextInput = (props: TextInputProps) => {
@@ -14,6 +15,7 @@ const TextInput = (props: TextInputProps) => {
           {props.name}
           <input
             {...field}
+            type={props.type}
             placeholder={props.placeholder ? props.placeholder : ''}
           />
         </label>
