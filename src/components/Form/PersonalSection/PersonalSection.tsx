@@ -1,6 +1,8 @@
 import { MultiStepForm } from '@/src/types/form.ts'
 import TextInput from '../../FormInput/TextInput.tsx'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAppDispatch } from '@/src/redux/hooks.tsx'
+import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -8,6 +10,7 @@ export type PersonalInfoForm = Pick<
 >
 
 const PersonalInfo = () => {
+  const dispatch = useAppDispatch()
   const { control, handleSubmit } = useForm<PersonalInfoForm>({
     defaultValues: {
       name: '',
@@ -18,7 +21,14 @@ const PersonalInfo = () => {
   })
 
   const onSubmit: SubmitHandler<PersonalInfoForm> = (data) => {
-    console.log(data)
+    dispatch(
+      updatePersonalInformation({
+        name: data.name,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+      })
+    )
+    dispatch(updateStep('plan'))
   }
 
   return (

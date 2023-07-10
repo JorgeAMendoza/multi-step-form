@@ -1,5 +1,4 @@
 import { useAppSelector } from '@/src/redux/hooks.tsx'
-import { FormStep } from '@/src/types/redux.ts'
 import style from './form-step.module.css'
 
 const FormStep = () => {
