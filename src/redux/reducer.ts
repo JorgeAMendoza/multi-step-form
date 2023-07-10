@@ -68,15 +68,15 @@ const formSlice = createSlice({
 export default formSlice.reducer
 
 // reducer helper functions
-export const updatePersonalInformation = (
-  name: string,
-  email: string,
+export const updatePersonalInformation = (info: {
+  name: string
+  email: string
   phoneNumber: string
-) => {
+}) => {
   return (dispatch: AppDispatch) => {
-    dispatch(formSlice.actions.updateName(name))
-    dispatch(formSlice.actions.updateEmail(email))
-    dispatch(formSlice.actions.updatePhoneNumber(phoneNumber))
+    dispatch(formSlice.actions.updateName(info.name))
+    dispatch(formSlice.actions.updateEmail(info.email))
+    dispatch(formSlice.actions.updatePhoneNumber(info.phoneNumber))
   }
 }
 
