@@ -2,10 +2,13 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import PlanInput from '../../FormInput/PlanInput.tsx'
 import PlanType from '../../FormInput/PlanType.tsx'
 import type { MultiStepForm } from '@/src/types/form.ts'
+import { useAppDispatch } from '@/src/redux/hooks.tsx'
+import { updateStep } from '@/src/redux/reducer.ts'
 
 export type PlanForm = Pick<MultiStepForm, 'plan' | 'subscription'>
 
 const PlanSection = () => {
+  const dispatch = useAppDispatch()
   const { control, handleSubmit } = useForm<PlanForm>({
     defaultValues: {
       plan: 'arcade',
@@ -35,8 +38,15 @@ const PlanSection = () => {
       </form>
 
       <div>
-        <button type="button">Go Back</button>
-        <button type="button">Next</button>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(updateStep('personalInfo'))
+          }}
+        >
+          Go Back
+        </button>
+        <button type="submit">Next</button>
       </div>
     </div>
   )

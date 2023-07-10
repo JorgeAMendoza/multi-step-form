@@ -8,7 +8,6 @@ type TextInputProps = UseControllerProps<PersonalInfoForm> & {
 
 const TextInput = (props: TextInputProps) => {
   const { field, fieldState } = useController(props)
-  console.log(props.name)
 
   return (
     <div>
