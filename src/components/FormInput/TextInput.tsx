@@ -13,7 +13,7 @@ const TextInput = (props: TextInputProps) => {
   return (
     <div>
       <div>
-        <label htmlFor="input-name">
+        <label>
           {props.name}
           <input
             {...field}
