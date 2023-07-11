@@ -27,7 +27,7 @@ const PlanSection = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <PlanInput control={control} value="arcade" name="plan" />
+          <PlanInput control={control} value="arcade" name="plan" checked />
           <PlanInput control={control} value="advanced" name="plan" />
           <PlanInput control={control} value="pro" name="plan" />
         </div>
@@ -35,19 +35,19 @@ const PlanSection = () => {
         <div>
           <PlanType />
         </div>
-      </form>
 
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            dispatch(updateStep('personalInfo'))
-          }}
-        >
-          Go Back
-        </button>
-        <button type="submit">Next</button>
-      </div>
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              dispatch(updateStep('personalInfo'))
+            }}
+          >
+            Go Back
+          </button>
+          <button type="submit">Next</button>
+        </div>
+      </form>
     </div>
   )
 }
