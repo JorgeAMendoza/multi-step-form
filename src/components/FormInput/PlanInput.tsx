@@ -3,7 +3,7 @@ import { PlanForm } from '../Form/PlanSection/PlanSection.tsx'
 
 type PlanInputProps = UseControllerProps<PlanForm> & {
   value: PlanForm['plan']
-  checked?: boolean
+  children: React.ReactNode
 }
 
 const PlanInput = (props: PlanInputProps) => {
@@ -20,7 +20,7 @@ const PlanInput = (props: PlanInputProps) => {
           checked={field.value === props.value ? true : false}
         />
         <p>{props.name}</p>
-        <p>plan price</p>
+        <div>{props.children}</div>
       </label>
     </div>
   )
