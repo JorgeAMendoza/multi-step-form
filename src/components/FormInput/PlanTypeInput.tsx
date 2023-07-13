@@ -16,6 +16,7 @@ const PlanTypeInput = (props: PlanTypeInputProps) => {
           type="radio"
           name="subscription"
           value={props.value}
+          checked={field.value === props.value ? true : false}
         />
       </label>
     </div>
