@@ -1,4 +1,4 @@
-import AddOnInput from '../FormInput/AddOnInput.tsx'
+import AddOnInput from '../../FormInput/AddOnInput.tsx'
 
 const AddOnSection = () => {
   return (

@@ -2,14 +2,16 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import PlanInput from '../../FormInput/PlanInput.tsx'
 import PlanTypeInput from '../../FormInput/PlanTypeInput.tsx'
 import type { MultiStepForm } from '@/src/types/form.ts'
-import { useAppDispatch } from '@/src/redux/hooks.tsx'
-import { updateStep } from '@/src/redux/reducer.ts'
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
+import { updatePlan, updateStep } from '@/src/redux/reducer.ts'
+import { useEffect } from 'react'
 
 export type PlanForm = Pick<MultiStepForm, 'plan' | 'subscription'>
 
 const PlanSection = () => {
   const dispatch = useAppDispatch()
-  const { control, handleSubmit, watch } = useForm<PlanForm>({
+  const { plan, subscription } = useAppSelector((state) => state.form)
+  const { control, handleSubmit, watch, reset, getValues } = useForm<PlanForm>({
     defaultValues: {
       plan: 'arcade',
       subscription: 'monthly',
@@ -17,8 +19,17 @@ const PlanSection = () => {
     mode: 'onChange',
   })
 
+  useEffect(() => {
+    if (!plan && !subscription) return
+    reset({
+      plan,
+      subscription,
+    })
+  }, [plan, subscription, reset])
+
   const onSubmit: SubmitHandler<PlanForm> = (data) => {
-    console.log(data)
+    dispatch(updatePlan(data.plan, data.subscription))
+    dispatch(updateStep('addOns'))
   }
 
   const currentSub = watch('subscription')
@@ -63,6 +74,7 @@ const PlanSection = () => {
           <button
             type="button"
             onClick={() => {
+              dispatch(updatePlan(getValues('plan'), getValues('subscription')))
               dispatch(updateStep('personalInfo'))
             }}
           >
