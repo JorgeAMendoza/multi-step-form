@@ -1,7 +1,8 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import type { MultiStepForm } from '@/src/types/form.ts'
 import AddOnInput from '../../FormInput/AddOnInput.tsx'
-import { useAppSelector } from '@/src/redux/hooks.tsx'
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
+import { updateAddOns, updateStep } from '@/src/redux/reducer.ts'
 
 export type AddOnForm = Pick<
   MultiStepForm,
@@ -10,6 +11,7 @@ export type AddOnForm = Pick<
 
 const AddOnSection = () => {
   const { subscription } = useAppSelector((state) => state.form)
+  const dispatch = useAppDispatch()
   const { control, handleSubmit } = useForm<AddOnForm>({
     defaultValues: {
       onlineService: false,
@@ -19,7 +21,8 @@ const AddOnSection = () => {
   })
 
   const onSubmit: SubmitHandler<AddOnForm> = (data) => {
-    console.log(data)
+    dispatch(updateAddOns(data))
+    dispatch(updateStep('confirmation'))
   }
   return (
     <div>
@@ -29,7 +32,7 @@ const AddOnSection = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <AddOnInput
           control={control}
-          name="customProfile"
+          name="onlineService"
           addOnTitle="Online Service"
           addOnDesc="Access to multiplayer games"
           addOnPrice={subscription === 'monthly' ? '+$1/mo' : '+$10/yr'}
@@ -43,7 +46,7 @@ const AddOnSection = () => {
         />
         <AddOnInput
           control={control}
-          name="onlineService"
+          name="customProfile"
           addOnTitle="Customizable profile"
           addOnDesc="Custom theme on your profile"
           addOnPrice={subscription === 'monthly' ? '+2/mo' : '+$20/yr'}
