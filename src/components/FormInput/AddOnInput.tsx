@@ -1,11 +1,14 @@
 import { UseControllerProps, useController } from 'react-hook-form'
 import { AddOnForm } from '../Form/AddOnSection/AddOnSection.tsx'
 
-type AddOnInputProps = UseControllerProps<AddOnForm>
+type AddOnInputProps = UseControllerProps<AddOnForm> & {
+  addOnTitle: string
+  addOnPrice: string
+  addOnDesc: string
+}
 
 const AddOnInput = (props: AddOnInputProps) => {
   const { field } = useController(props)
-  console.log(field.name, field.value)
 
   return (
     <div>
@@ -23,11 +26,11 @@ const AddOnInput = (props: AddOnInputProps) => {
         checked={field.value}
       />
       <label htmlFor={props.name}>
-        {field.name}
+        {props.addOnTitle}
         <br />
-        Extra text
+        {props.addOnDesc}
       </label>
-      <p>add on price</p>
+      <p>{props.addOnPrice}</p>
     </div>
   )
 }

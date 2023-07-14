@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import type { MultiStepForm } from '@/src/types/form.ts'
 import AddOnInput from '../../FormInput/AddOnInput.tsx'
+import { useAppSelector } from '@/src/redux/hooks.tsx'
 
 export type AddOnForm = Pick<
   MultiStepForm,
@@ -8,6 +9,7 @@ export type AddOnForm = Pick<
 >
 
 const AddOnSection = () => {
+  const { subscription } = useAppSelector((state) => state.form)
   const { control, handleSubmit } = useForm<AddOnForm>({
     defaultValues: {
       onlineService: false,
@@ -25,9 +27,27 @@ const AddOnSection = () => {
       <p>Add-ons help enhance your gaming experience.</p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AddOnInput control={control} name="customProfile" />
-        <AddOnInput control={control} name="largerStorage" />
-        <AddOnInput control={control} name="onlineService" />
+        <AddOnInput
+          control={control}
+          name="customProfile"
+          addOnTitle="Online Service"
+          addOnDesc="Access to multiplayer games"
+          addOnPrice={subscription === 'monthly' ? '+$1/mo' : '+$10/yr'}
+        />
+        <AddOnInput
+          control={control}
+          name="largerStorage"
+          addOnTitle="Larger storage"
+          addOnDesc="Extra 1TB of cloud save"
+          addOnPrice={subscription === 'monthly' ? '+$2/mo' : '+$20/yr'}
+        />
+        <AddOnInput
+          control={control}
+          name="onlineService"
+          addOnTitle="Customizable profile"
+          addOnDesc="Custom theme on your profile"
+          addOnPrice={subscription === 'monthly' ? '+2/mo' : '+$20/yr'}
+        />
 
         <div>
           <button type="button">Go Back</button>
