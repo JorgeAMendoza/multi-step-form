@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react'
+import type { AddOns } from '@/src/types/redux.ts'
+import { useAppSelector } from '@/src/redux/hooks.tsx'
+
 const Submission = () => {
   return (
     <div>
@@ -12,7 +16,30 @@ const Submission = () => {
   )
 }
 
+type FormTotal = {
+  planPrice: string
+  totalPrice: string
+  addOnPrice: Array<[AddOns, string]>
+}
+
 const Confirmation = () => {
+  const { subscription, plan, addOns } = useAppSelector((state) => state.form)
+  const [formTotal, setFormTotal] = useState(null)
+
+  useEffect(() => {
+    if (subscription === 'monthly') {
+      // we will calculate for monthly prices
+      let addOnTotal = 0
+      const testObject: AddOns[] = Object.keys(addOns) as AddOns[]
+      for (const key of testObject) {
+        if (addOns[key]) {
+          addOnTotal += 1
+        }
+      }
+    }
+    // we calculate for
+  }, [subscription, plan, addOns])
+
   return (
     <div>
       <h2>Finishing up</h2>
