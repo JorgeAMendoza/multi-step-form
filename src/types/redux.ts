@@ -13,6 +13,6 @@ export interface FormStore {
 }
 
 export interface Prices {
-  plans: { [Key in GamingPlans]: { montly: string; yearly: string } }
-  addOns: { [Key in AddOns]: { monthly: string; yearly: string } }
+  plans: { [Key in GamingPlans]: { monthly: number; yearly: number } }
+  addOns: { [Key in AddOns]: { monthly: number; yearly: number } }
 }
