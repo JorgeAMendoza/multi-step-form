@@ -1,0 +1,7 @@
+.stepList {
+  border: 1px solid red;
+}
+
+.stepList li[data-active='true'] {
+  border: 1px solid purple;
+}

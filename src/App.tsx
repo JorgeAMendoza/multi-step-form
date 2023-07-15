@@ -1,7 +1,9 @@
+import { Provider } from 'react-redux'
 import Form from './components/Form/index.tsx'
 import FormStep from './components/FormStep/FormStep.tsx'
+import { store } from './redux/store.ts'
 
-function App() {
+export const MultiStepForm = () => {
   return (
     <main>
       <section>
@@ -9,6 +11,14 @@ function App() {
         <Form />
       </section>
     </main>
+  )
+}
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <MultiStepForm />
+    </Provider>
   )
 }
 

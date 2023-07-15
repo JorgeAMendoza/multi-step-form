@@ -1,12 +1,26 @@
+import { useAppSelector } from '@/src/redux/hooks.tsx'
+import style from './form-step.module.css'
+
 const FormStep = () => {
+  const { step } = useAppSelector((state) => state.form)
   return (
-    // lets make the form steps dependent on the store.
-    // so it should loop over the steps, and using another var, it will be "active"
     <div>
-      <ul>
-        <li data-active="true">
-          <p>Step X</p>
-          <p>Step name</p>
+      <ul className={style.stepList}>
+        <li data-active={step === 'personalInfo' ? 'true' : 'false'}>
+          <p>Step 1</p>
+          <p>Your Info</p>
+        </li>
+        <li data-active={step === 'plan' ? 'true' : 'false'}>
+          <p>Step 2</p>
+          <p>Select Plan</p>
+        </li>
+        <li data-active={step === 'addOns' ? 'true' : 'false'}>
+          <p>Step 3</p>
+          <p>Add-ons</p>
+        </li>
+        <li data-active={step === 'confirmation' ? 'true' : 'false'}>
+          <p>Step 4</p>
+          <p>Summary</p>
         </li>
       </ul>
     </div>

@@ -1,8 +1,27 @@
-import { AddOns, FormStore, GamingPlans, FormStep } from '../types/redux.ts'
+import {
+  AddOns,
+  FormStore,
+  GamingPlans,
+  FormStep,
+  Prices,
+} from '../types/redux.ts'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppDispatch } from './store.ts'
 
-const initalState: FormStore = {
+const servicePrices: Prices = {
+  plans: {
+    arcade: { monthly: 9, yearly: 90 },
+    advanced: { monthly: 12, yearly: 120 },
+    pro: { monthly: 15, yearly: 150 },
+  },
+  addOns: {
+    onlineService: { monthly: 1, yearly: 10 },
+    largerStorage: { monthly: 2, yearly: 20 },
+    customProfile: { monthly: 2, yearly: 20 },
+  },
+}
+
+const initalState: FormStore & { prices: Prices } = {
   name: '',
   email: '',
   phoneNumber: '',
@@ -14,6 +33,7 @@ const initalState: FormStore = {
     customProfile: false,
   },
   step: 'personalInfo',
+  prices: servicePrices,
 }
 
 const formSlice = createSlice({
@@ -68,15 +88,15 @@ const formSlice = createSlice({
 export default formSlice.reducer
 
 // reducer helper functions
-export const updatePersonalInformation = (
-  name: string,
-  email: string,
+export const updatePersonalInformation = (info: {
+  name: string
+  email: string
   phoneNumber: string
-) => {
+}) => {
   return (dispatch: AppDispatch) => {
-    dispatch(formSlice.actions.updateName(name))
-    dispatch(formSlice.actions.updateEmail(email))
-    dispatch(formSlice.actions.updatePhoneNumber(phoneNumber))
+    dispatch(formSlice.actions.updateName(info.name))
+    dispatch(formSlice.actions.updateEmail(info.email))
+    dispatch(formSlice.actions.updatePhoneNumber(info.phoneNumber))
   }
 }
 
@@ -117,5 +137,11 @@ export const updateAddOns = (services: {
 export const updateStep = (step: FormStep) => {
   return (dispatch: AppDispatch) => {
     dispatch(formSlice.actions.updateStep(step))
+  }
+}
+
+export const resetForm = () => {
+  return (dispatch: AppDispatch) => {
+    dispatch(formSlice.actions.resetForm())
   }
 }
