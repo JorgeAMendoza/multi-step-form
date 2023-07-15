@@ -17,55 +17,79 @@ const Submission = () => {
 }
 
 type FormTotal = {
-  planPrice: string
-  totalPrice: string
-  addOnPrice: Array<[AddOns, string]>
+  planPrice: number
+  totalPrice: number
+  addOnPrice: Array<[AddOns, number]>
 }
 
 const Confirmation = () => {
-  const { subscription, plan, addOns } = useAppSelector((state) => state.form)
-  const [formTotal, setFormTotal] = useState(null)
+  const { subscription, plan, addOns, prices } = useAppSelector(
+    (state) => state.form
+  )
+  const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
 
   useEffect(() => {
-    if (subscription === 'monthly') {
-      // we will calculate for monthly prices
-      let addOnTotal = 0
-      const testObject: AddOns[] = Object.keys(addOns) as AddOns[]
-      for (const key of testObject) {
-        if (addOns[key]) {
-          addOnTotal += 1
-        }
+    let addOnTotal = 0
+    const addOnList: Array<[AddOns, number]> = []
+    const addOnNames: AddOns[] = Object.keys(addOns) as AddOns[]
+    for (const key of addOnNames) {
+      if (addOns[key]) {
+        const addOnPrice =
+          subscription === 'monthly'
+            ? prices.addOns[key].monthly
+            : prices.addOns[key].yearly
+        addOnTotal += addOnPrice
+        addOnList.push([key, addOnPrice])
       }
     }
-    // we calculate for
-  }, [subscription, plan, addOns])
+
+    const priceSummary: FormTotal = {
+      addOnPrice: addOnList,
+      planPrice:
+        subscription === 'monthly'
+          ? prices.plans[plan].monthly
+          : prices.plans[plan].yearly,
+      totalPrice:
+        subscription === 'monthly'
+          ? prices.plans[plan].monthly + addOnTotal
+          : prices.plans[plan].yearly + addOnTotal,
+    }
+    setFormTotal(priceSummary)
+  }, [addOns, plan, prices, subscription])
+
+  if (!formTotal) return null
 
   return (
     <div>
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming</p>
 
-      {/* results pane */}
       <div>
-        {/* plan confirmation */}
         <div>
           <p>
-            Plan name <button>Change</button>
+            {plan} ({subscription})<button>Change</button>
           </p>
 
-          <p>plan price</p>
+          <p>{formTotal.planPrice}</p>
         </div>
 
         {/* Add-ons */}
         <div>
-          <p>
-            Add-on name <span>add-on price</span>
-          </p>
+          <ul>
+            {formTotal.addOnPrice.map(([addOn, price]) => (
+              <li key={addOn}>
+                <p>
+                  {addOn} <span>{price}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <p>
-        Total &#40;per type&#41; <span>price</span>
+        Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
+        <span>{formTotal.totalPrice}</span>
       </p>
 
       <div>
