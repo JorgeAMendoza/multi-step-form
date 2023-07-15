@@ -139,3 +139,9 @@ export const updateStep = (step: FormStep) => {
     dispatch(formSlice.actions.updateStep(step))
   }
 }
+
+export const resetForm = () => {
+  return (dispatch: AppDispatch) => {
+    dispatch(formSlice.actions.resetForm())
+  }
+}

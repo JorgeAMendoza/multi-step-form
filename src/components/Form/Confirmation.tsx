@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import type { AddOns } from '@/src/types/redux.ts'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
-import { updateStep } from '@/src/redux/reducer.ts'
+import { resetForm, updateStep } from '@/src/redux/reducer.ts'
 
 const Submission = () => {
+  const dispatch = useAppDispatch()
   return (
     <div>
       <p>checkmark image</p>
@@ -14,6 +15,14 @@ const Submission = () => {
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com.
       </p>
+      <button
+        type="button"
+        onClick={() => {
+          dispatch(resetForm())
+        }}
+      >
+        Click here to start over!
+      </button>
     </div>
   )
 }
@@ -30,6 +39,8 @@ const Confirmation = () => {
   )
   const dispatch = useAppDispatch()
   const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
+  const [submittingForm, setSubmittingForm] = useState(false)
+  const [formSubmitted, setFormSubmitted] = useState(false)
 
   useEffect(() => {
     const total = calculateTotal(addOns, subscription, prices, plan)
@@ -37,6 +48,8 @@ const Confirmation = () => {
   }, [addOns, plan, prices, subscription])
 
   if (!formTotal) return null
+  if (submittingForm) return <p>Submitting form..., spinner here</p>
+  if (formSubmitted) return <Submission />
 
   return (
     <div>
@@ -88,7 +101,18 @@ const Confirmation = () => {
         >
           Go Back
         </button>
-        <button type="button">Confirm</button>
+        <button
+          type="button"
+          onClick={() => {
+            setSubmittingForm(true)
+            setTimeout(() => {
+              setSubmittingForm(false)
+              setFormSubmitted(true)
+            }, 2000)
+          }}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   )
