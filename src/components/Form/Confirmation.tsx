@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { AddOns } from '@/src/types/redux.ts'
 import { useAppSelector } from '@/src/redux/hooks.tsx'
+import calculateTotal from '@/src/lib/calculateTotal.ts'
 
 const Submission = () => {
   return (
@@ -16,7 +17,7 @@ const Submission = () => {
   )
 }
 
-type FormTotal = {
+export type FormTotal = {
   planPrice: number
   totalPrice: number
   addOnPrice: Array<[AddOns, number]>
@@ -29,32 +30,8 @@ const Confirmation = () => {
   const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
 
   useEffect(() => {
-    let addOnTotal = 0
-    const addOnList: Array<[AddOns, number]> = []
-    const addOnNames: AddOns[] = Object.keys(addOns) as AddOns[]
-    for (const key of addOnNames) {
-      if (addOns[key]) {
-        const addOnPrice =
-          subscription === 'monthly'
-            ? prices.addOns[key].monthly
-            : prices.addOns[key].yearly
-        addOnTotal += addOnPrice
-        addOnList.push([key, addOnPrice])
-      }
-    }
-
-    const priceSummary: FormTotal = {
-      addOnPrice: addOnList,
-      planPrice:
-        subscription === 'monthly'
-          ? prices.plans[plan].monthly
-          : prices.plans[plan].yearly,
-      totalPrice:
-        subscription === 'monthly'
-          ? prices.plans[plan].monthly + addOnTotal
-          : prices.plans[plan].yearly + addOnTotal,
-    }
-    setFormTotal(priceSummary)
+    const total = calculateTotal(addOns, subscription, prices, plan)
+    setFormTotal(total)
   }, [addOns, plan, prices, subscription])
 
   if (!formTotal) return null
