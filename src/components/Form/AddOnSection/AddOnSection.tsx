@@ -3,6 +3,7 @@ import type { MultiStepForm } from '@/src/types/form.ts'
 import AddOnInput from '../../FormInput/AddOnInput.tsx'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updateAddOns, updateStep } from '@/src/redux/reducer.ts'
+import { useEffect } from 'react'
 
 export type AddOnForm = Pick<
   MultiStepForm,
@@ -10,15 +11,19 @@ export type AddOnForm = Pick<
 >
 
 const AddOnSection = () => {
-  const { subscription } = useAppSelector((state) => state.form)
+  const { subscription, addOns } = useAppSelector((state) => state.form)
   const dispatch = useAppDispatch()
-  const { control, handleSubmit } = useForm<AddOnForm>({
+  const { control, handleSubmit, reset } = useForm<AddOnForm>({
     defaultValues: {
       onlineService: false,
       largerStorage: false,
       customProfile: false,
     },
   })
+
+  useEffect(() => {
+    reset(addOns)
+  }, [addOns, reset])
 
   const onSubmit: SubmitHandler<AddOnForm> = (data) => {
     dispatch(updateAddOns(data))

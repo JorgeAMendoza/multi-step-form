@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import type { AddOns } from '@/src/types/redux.ts'
-import { useAppSelector } from '@/src/redux/hooks.tsx'
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
+import { updateStep } from '@/src/redux/reducer.ts'
 
 const Submission = () => {
   return (
@@ -27,6 +28,7 @@ const Confirmation = () => {
   const { subscription, plan, addOns, prices } = useAppSelector(
     (state) => state.form
   )
+  const dispatch = useAppDispatch()
   const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
 
   useEffect(() => {
@@ -44,7 +46,15 @@ const Confirmation = () => {
       <div>
         <div>
           <p>
-            {plan} ({subscription})<button>Change</button>
+            {plan} ({subscription})
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(updateStep('plan'))
+              }}
+            >
+              Change
+            </button>
           </p>
 
           <p>{formTotal.planPrice}</p>
@@ -70,7 +80,14 @@ const Confirmation = () => {
       </p>
 
       <div>
-        <button type="button">Go Back</button>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(updateStep('addOns'))
+          }}
+        >
+          Go Back
+        </button>
         <button type="button">Confirm</button>
       </div>
     </div>
