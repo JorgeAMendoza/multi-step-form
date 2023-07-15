@@ -1,8 +1,27 @@
-import { AddOns, FormStore, GamingPlans, FormStep } from '../types/redux.ts'
+import {
+  AddOns,
+  FormStore,
+  GamingPlans,
+  FormStep,
+  Prices,
+} from '../types/redux.ts'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppDispatch } from './store.ts'
 
-const initalState: FormStore = {
+const servicePrices: Prices = {
+  plans: {
+    arcade: { montly: '9', yearly: '90' },
+    advanced: { montly: '12', yearly: '120' },
+    pro: { montly: '15', yearly: '150' },
+  },
+  addOns: {
+    onlineService: { monthly: '1', yearly: '10' },
+    largerStorage: { monthly: '2', yearly: '20' },
+    customProfile: { monthly: '2', yearly: '20' },
+  },
+}
+
+const initalState: FormStore & { prices: Prices } = {
   name: '',
   email: '',
   phoneNumber: '',
@@ -14,6 +33,7 @@ const initalState: FormStore = {
     customProfile: false,
   },
   step: 'personalInfo',
+  prices: servicePrices,
 }
 
 const formSlice = createSlice({

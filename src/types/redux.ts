@@ -11,3 +11,8 @@ export interface FormStore {
   subscription: 'monthly' | 'yearly'
   addOns: { [Key in AddOns]: boolean }
 }
+
+export interface Prices {
+  plans: { [Key in GamingPlans]: { montly: string; yearly: string } }
+  addOns: { [Key in AddOns]: { monthly: string; yearly: string } }
+}
