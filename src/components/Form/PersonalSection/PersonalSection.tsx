@@ -44,8 +44,8 @@ const PersonalInfo = () => {
   }
 
   return (
-    <div>
-      <h2>Pesonal Info</h2>
+    <section data-testid="personalInfo">
+      <h2>Personal Info</h2>
       <p>Please provide your name, email address, and phone number.</p>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -67,7 +67,7 @@ const PersonalInfo = () => {
             required: { value: true, message: 'This field is required' },
             pattern: {
               value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: 'Please enter a valid email address',
+              message: 'Valid email required',
             },
           }}
         />
@@ -80,13 +80,15 @@ const PersonalInfo = () => {
             required: { value: true, message: 'This field is required' },
             pattern: {
               value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-              message: 'Please enter a valid phone number',
+              message: 'Valid phone number required',
             },
           }}
         />
-        <button type="submit">Next</button>
+        <button type="submit" data-testid="nextButton">
+          Next
+        </button>
       </form>
-    </div>
+    </section>
   )
 }
 

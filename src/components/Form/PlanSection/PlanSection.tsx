@@ -77,6 +77,7 @@ const PlanSection = () => {
               dispatch(updatePlan(getValues('plan'), getValues('subscription')))
               dispatch(updateStep('personalInfo'))
             }}
+            data-testid="previousButton"
           >
             Go Back
           </button>
