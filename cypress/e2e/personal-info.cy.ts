@@ -72,7 +72,7 @@ describe('Personal info form section', () => {
     cy.get('@personalInfo').should('not.exist')
   })
 
-  it.only('should be able to leave page and come back with the same data in the form', () => {
+  it('should be able to leave page and come back with the same data in the form', () => {
     cy.get('@nameInput').find('input').type('test')
     cy.get('@emailInput').find('input').type('testemail@gmail.com')
     cy.get('@phoneNumberInput').find('input').type('1234567890')

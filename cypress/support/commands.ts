@@ -38,9 +38,9 @@
 
 // create steps for completing a step of the form
 Cypress.Commands.add('completePersonalInfoStep', () => {
-  cy.get('[data-testid="nameInput"]').type('Test Name')
-  cy.get('[data-testid="emailInput"]').type('testmeail@gmail.com')
-  cy.get('[data-testid="phoneInput"]').type('1234567890')
+  cy.get('[data-testid="nameInput"]').find('input').type('Test Name')
+  cy.get('[data-testid="emailInput"]').find('input').type('testmeail@gmail.com')
+  cy.get('[data-testid="phoneNumberInput"]').find('input').type('1234567890')
   cy.get('[data-testid="nextButton"]').click()
 })
 
