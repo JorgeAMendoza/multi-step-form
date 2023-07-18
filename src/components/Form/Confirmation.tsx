@@ -52,7 +52,7 @@ const Confirmation = () => {
   if (formSubmitted) return <Submission />
 
   return (
-    <div>
+    <section data-testid="confirmation">
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming</p>
 
@@ -98,6 +98,7 @@ const Confirmation = () => {
           onClick={() => {
             dispatch(updateStep('addOns'))
           }}
+          data-testid="previousButton"
         >
           Go Back
         </button>
@@ -114,7 +115,7 @@ const Confirmation = () => {
           Confirm
         </button>
       </div>
-    </div>
+    </section>
   )
 }
 

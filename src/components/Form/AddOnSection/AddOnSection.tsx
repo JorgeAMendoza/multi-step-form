@@ -67,7 +67,9 @@ const AddOnSection = () => {
           >
             Go Back
           </button>
-          <button type="submit">Next</button>
+          <button type="submit" data-testid="nextButton">
+            Next
+          </button>
         </div>
       </form>
     </section>
