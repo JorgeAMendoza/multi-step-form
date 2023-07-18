@@ -3,6 +3,7 @@ import type { AddOns } from '@/src/types/redux.ts'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
 import { resetForm, updateStep } from '@/src/redux/reducer.ts'
+import convertToTitleCase from '@/src/lib/convertToTitleCase.ts'
 
 const Submission = () => {
   const dispatch = useAppDispatch()
@@ -57,7 +58,7 @@ const Confirmation = () => {
       <p>Double-check everything looks OK before confirming</p>
 
       <div>
-        <div>
+        <div data-testid="planInformation">
           <p>
             {plan} ({subscription})
             <button
@@ -70,16 +71,23 @@ const Confirmation = () => {
             </button>
           </p>
 
-          <p>{formTotal.planPrice}</p>
+          <p>
+            ${formTotal.planPrice}
+            {subscription === 'monthly' ? '/mo' : '/yr'}
+          </p>
         </div>
 
         {/* Add-ons */}
         <div>
-          <ul>
+          <ul data-testid="addOnInformation">
             {formTotal.addOnPrice.map(([addOn, price]) => (
               <li key={addOn}>
-                <p>
-                  {addOn} <span>{price}</span>
+                <p data-testid={`${addOn}Price`}>
+                  {convertToTitleCase(addOn)}{' '}
+                  <span>
+                    +${price}
+                    {subscription === 'monthly' ? '/mo' : '/yr'}
+                  </span>
                 </p>
               </li>
             ))}
@@ -87,9 +95,12 @@ const Confirmation = () => {
         </div>
       </div>
 
-      <p>
+      <p data-testid="total">
         Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
-        <span>{formTotal.totalPrice}</span>
+        <span>
+          +${formTotal.totalPrice}
+          {subscription === 'monthly' ? '/mo' : '/yr'}
+        </span>
       </p>
 
       <div>
@@ -111,6 +122,7 @@ const Confirmation = () => {
               setFormSubmitted(true)
             }, 2000)
           }}
+          data-testid="confirmButton"
         >
           Confirm
         </button>
