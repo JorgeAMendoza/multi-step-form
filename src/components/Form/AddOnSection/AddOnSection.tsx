@@ -30,7 +30,7 @@ const AddOnSection = () => {
     dispatch(updateStep('confirmation'))
   }
   return (
-    <div>
+    <section data-testid="addOns">
       <h2>Pick add-ons</h2>
       <p>Add-ons help enhance your gaming experience.</p>
 
@@ -58,11 +58,21 @@ const AddOnSection = () => {
         />
 
         <div>
-          <button type="button">Go Back</button>
-          <button type="submit">Next</button>
+          <button
+            type="button"
+            data-testid="previousButton"
+            onClick={() => {
+              dispatch(updateStep('plan'))
+            }}
+          >
+            Go Back
+          </button>
+          <button type="submit" data-testid="nextButton">
+            Next
+          </button>
         </div>
       </form>
-    </div>
+    </section>
   )
 }
 

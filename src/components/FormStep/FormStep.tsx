@@ -4,7 +4,7 @@ import style from './form-step.module.css'
 const FormStep = () => {
   const { step } = useAppSelector((state) => state.form)
   return (
-    <div>
+    <div data-testid="formSteps">
       <ul className={style.stepList}>
         <li data-active={step === 'personalInfo' ? 'true' : 'false'}>
           <p>Step 1</p>
@@ -16,7 +16,7 @@ const FormStep = () => {
         </li>
         <li data-active={step === 'addOns' ? 'true' : 'false'}>
           <p>Step 3</p>
-          <p>Add-ons</p>
+          <p>Add-Ons</p>
         </li>
         <li data-active={step === 'confirmation' ? 'true' : 'false'}>
           <p>Step 4</p>

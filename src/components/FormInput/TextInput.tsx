@@ -10,7 +10,7 @@ const TextInput = (props: TextInputProps) => {
   const { field, fieldState } = useController(props)
 
   return (
-    <div>
+    <div data-testid={`${props.name}Input`}>
       <div>
         <label>
           {props.name}
@@ -22,11 +22,11 @@ const TextInput = (props: TextInputProps) => {
         </label>
 
         {fieldState.isTouched && fieldState.invalid ? (
-          <p>
+          <span>
             {fieldState.error?.message
               ? fieldState.error.message
               : 'Invalid input'}
-          </p>
+          </span>
         ) : null}
       </div>
     </div>

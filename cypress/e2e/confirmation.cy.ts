@@ -14,20 +14,20 @@ describe('Confirmation page', () => {
     cy.get('[data-testid="formSteps"]').as('formSteps')
     cy.get('[data-testid="confirmButton"]').as('confirmButton')
     cy.get('[data-testid="planInformation"]').as('planInformation')
-    cy.get('[data-testid="addOnsInformation"]').as('addOnsInformation')
+    cy.get('[data-testid="addOnInformation"]').as('addOnsInformation')
     cy.get('[data-testid="total"]').as('total')
+    cy.get('[data-testid="previousButton"]').as('previousButton')
   })
 
   it('previously selected options and total should be displayed', () => {
     cy.get('@formSteps')
       .find('[data-active="true"]')
-      .should('contain', 'SUMMARY')
-    cy.get('@planInformation').should('contain', 'Arcade Plan')
-    cy.get('@planInformation').should('contain', '$9/mo')
-    cy.get('@addOnsInformation').should('contain', 'Online Service')
+      .should('contain', 'Summary')
+    cy.get('@planInformation').should('contain', 'pro')
+    cy.get('@planInformation').should('contain', '$15/mo')
     cy.get('[data-testid="onlineServicePrice"]').should(
       'contain.text',
-      '+$1/mo'
+      'Online Service +$1/mo'
     )
     cy.get('@addOnsInformation').should('contain', 'Larger Storage')
     cy.get('[data-testid="largerStoragePrice"]').should(
@@ -40,21 +40,21 @@ describe('Confirmation page', () => {
       '+$2/mo'
     )
     cy.get('@total').should('contain', 'Total (per month)')
-    cy.get('@total').should('contain', '+$14/mo')
+    cy.get('@total').should('contain', '+$20/mo')
   })
 
   it('should be able to go back to plan step and change plan', () => {
     cy.get('@planInformation').find('button').click()
     cy.get('[data-testid="selectPlan"]').should('exist')
 
-    cy.get('[data-testid="proPlanInput"]').click()
-    cy.get('[data-testid="yearlySubInput"]').click()
+    cy.get('[data-testid="arcadePlanInput"]').find('input').click()
+    cy.get('[data-testid="yearlySubInput"]').find('input').click()
 
     cy.get('[data-testid="nextButton"]').click()
     cy.get('[data-testid="nextButton"]').click()
 
-    cy.get('@planInformation').should('contain', 'Pro Plan')
-    cy.get('@planInformation').should('contain', '$150/yr')
+    cy.get('@planInformation').should('contain', 'arcade (yearly)')
+    cy.get('@planInformation').should('contain', '$90/yr')
     cy.get('@addOnsInformation').should('contain', 'Online Service')
     cy.get('[data-testid="onlineServicePrice"]').should(
       'contain.text',
@@ -72,7 +72,7 @@ describe('Confirmation page', () => {
       '+$20/yr'
     )
     cy.get('@total').should('contain', 'Total (per year)')
-    cy.get('@total').should('contain', '+200/yr')
+    cy.get('@total').should('contain', '+$140/yr')
   })
 
   it('should be able to go back and remove an add-on', () => {
@@ -83,8 +83,8 @@ describe('Confirmation page', () => {
     cy.get('[data-testid="nextButton"]').click()
 
     cy.get('@confirmation').should('exist')
-    cy.get('@planInformation').should('contain', 'Arcade Plan')
-    cy.get('@planInformation').should('contain', '$9/mo')
+    cy.get('@planInformation').should('contain', 'pro (monthly)')
+    cy.get('@planInformation').should('contain', '$15/mo')
     cy.get('@addOnsInformation').should('contain', 'Online Service')
     cy.get('[data-testid="onlineServicePrice"]').should(
       'contain.text',
@@ -98,7 +98,7 @@ describe('Confirmation page', () => {
 
     cy.get('@addOnsInformation').should('not.contain', 'Custom Profile')
     cy.get('@total').should('contain', 'Total (per month)')
-    cy.get('@total').should('contain', '+$17/mo')
+    cy.get('@total').should('contain', '+$18/mo')
   })
 
   it('should be able to confirm and see "thank you" message', () => {

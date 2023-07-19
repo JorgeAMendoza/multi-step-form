@@ -35,7 +35,7 @@ const PlanSection = () => {
   const currentSub = watch('subscription')
 
   return (
-    <div>
+    <section data-testid="selectPlan">
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
 
@@ -77,13 +77,16 @@ const PlanSection = () => {
               dispatch(updatePlan(getValues('plan'), getValues('subscription')))
               dispatch(updateStep('personalInfo'))
             }}
+            data-testid="previousButton"
           >
             Go Back
           </button>
-          <button type="submit">Next</button>
+          <button type="submit" data-testid="nextButton">
+            Next
+          </button>
         </div>
       </form>
-    </div>
+    </section>
   )
 }
 

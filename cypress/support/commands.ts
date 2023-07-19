@@ -38,22 +38,21 @@
 
 // create steps for completing a step of the form
 Cypress.Commands.add('completePersonalInfoStep', () => {
-  cy.get('[data-testid="nameInput"]').type('Test Name')
-  cy.get('[data-testid="emailInput"]').type('testmeail@gmail.com')
-  cy.get('[data-testid="phoneInput"]').type('1234567890')
+  cy.get('[data-testid="nameInput"]').find('input').type('Test Name')
+  cy.get('[data-testid="emailInput"]').find('input').type('testmeail@gmail.com')
+  cy.get('[data-testid="phoneNumberInput"]').find('input').type('1234567890')
   cy.get('[data-testid="nextButton"]').click()
 })
 
 Cypress.Commands.add('completePlanStep', () => {
-  cy.get('[data-testid=""arcadePlanInput]').click()
-  cy.get('[data-testid="montlySubInput"]').click()
+  cy.get('[data-testid="proPlanInput"]').find('input').click()
   cy.get('[data-testid="nextButton"]').click()
 })
 
 Cypress.Commands.add('completeAddOnsStep', () => {
-  cy.get('[data-testid="onlineServiceInput"]').click()
-  cy.get('[data-testid="largerStorageInput"]').click()
-  cy.get('[data-testid="customProfileInput"]').click()
+  cy.get('[data-testid="onlineServiceInput"]').find('input').click()
+  cy.get('[data-testid="largerStorageInput"]').find('input').click()
+  cy.get('[data-testid="customProfileInput"]').find('input').click()
   cy.get('[data-testid="nextButton"]').click()
 })
 

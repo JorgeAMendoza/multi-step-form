@@ -8,7 +8,7 @@ type PlanTypeInputProps = UseControllerProps<PlanForm> & {
 const PlanTypeInput = (props: PlanTypeInputProps) => {
   const { field } = useController(props)
   return (
-    <div>
+    <div data-testid={`${props.value}SubInput`}>
       <label>
         {props.value}
         <input

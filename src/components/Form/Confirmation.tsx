@@ -3,13 +3,14 @@ import type { AddOns } from '@/src/types/redux.ts'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
 import { resetForm, updateStep } from '@/src/redux/reducer.ts'
+import convertToTitleCase from '@/src/lib/convertToTitleCase.ts'
 
 const Submission = () => {
   const dispatch = useAppDispatch()
   return (
-    <div>
+    <div data-testid="thankYouMessage">
       <p>checkmark image</p>
-      <h2>Thank You!</h2>
+      <h2>Thank you!</h2>
       <p>
         Thanks for confirming your subscription! We hope you have fun using our
         platform. If you ever need support, please feel free to email us at
@@ -52,12 +53,12 @@ const Confirmation = () => {
   if (formSubmitted) return <Submission />
 
   return (
-    <div>
+    <section data-testid="confirmation">
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming</p>
 
       <div>
-        <div>
+        <div data-testid="planInformation">
           <p>
             {plan} ({subscription})
             <button
@@ -70,16 +71,23 @@ const Confirmation = () => {
             </button>
           </p>
 
-          <p>{formTotal.planPrice}</p>
+          <p>
+            ${formTotal.planPrice}
+            {subscription === 'monthly' ? '/mo' : '/yr'}
+          </p>
         </div>
 
         {/* Add-ons */}
         <div>
-          <ul>
+          <ul data-testid="addOnInformation">
             {formTotal.addOnPrice.map(([addOn, price]) => (
               <li key={addOn}>
-                <p>
-                  {addOn} <span>{price}</span>
+                <p data-testid={`${addOn}Price`}>
+                  {convertToTitleCase(addOn)}{' '}
+                  <span>
+                    +${price}
+                    {subscription === 'monthly' ? '/mo' : '/yr'}
+                  </span>
                 </p>
               </li>
             ))}
@@ -87,9 +95,12 @@ const Confirmation = () => {
         </div>
       </div>
 
-      <p>
+      <p data-testid="total">
         Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
-        <span>{formTotal.totalPrice}</span>
+        <span>
+          +${formTotal.totalPrice}
+          {subscription === 'monthly' ? '/mo' : '/yr'}
+        </span>
       </p>
 
       <div>
@@ -98,6 +109,7 @@ const Confirmation = () => {
           onClick={() => {
             dispatch(updateStep('addOns'))
           }}
+          data-testid="previousButton"
         >
           Go Back
         </button>
@@ -110,11 +122,12 @@ const Confirmation = () => {
               setFormSubmitted(true)
             }, 2000)
           }}
+          data-testid="confirmButton"
         >
           Confirm
         </button>
       </div>
-    </div>
+    </section>
   )
 }
 

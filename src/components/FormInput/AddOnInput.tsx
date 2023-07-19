@@ -11,7 +11,7 @@ const AddOnInput = (props: AddOnInputProps) => {
   const { field } = useController(props)
 
   return (
-    <label>
+    <label data-testid={`${props.name}Input`}>
       <span>
         <input
           type="checkbox"
