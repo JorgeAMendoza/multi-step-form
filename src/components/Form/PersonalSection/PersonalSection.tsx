@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
+import { Container } from '@/src/styles/utils/Container.styled.tsx'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -45,49 +46,57 @@ const PersonalInfo = () => {
 
   return (
     <section data-testid="personalInfo">
-      <h2>Personal Info</h2>
-      <p>Please provide your name, email address, and phone number.</p>
+      <Container>
+        <h2>Personal Info</h2>
+        <p>Please provide your name, email address, and phone number.</p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextInput
+            control={control}
+            name="name"
+            placeholder="e.g. Stephen King"
+            type="text"
+            rules={{
+              required: { value: true, message: 'This field is required' },
+            }}
+          />
+          <TextInput
+            control={control}
+            name="email"
+            placeholder="e.g. stephenking@lorem.com"
+            type="email"
+            rules={{
+              required: { value: true, message: 'This field is required' },
+              pattern: {
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                message: 'Valid email required',
+              },
+            }}
+          />
+          <TextInput
+            control={control}
+            name="phoneNumber"
+            placeholder="e.g. +1 234 567 890"
+            type="tel"
+            rules={{
+              required: { value: true, message: 'This field is required' },
+              pattern: {
+                value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+                message: 'Valid phone number required',
+              },
+            }}
+          />
+        </form>
+      </Container>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInput
-          control={control}
-          name="name"
-          placeholder="e.g. Stephen King"
-          type="text"
-          rules={{
-            required: { value: true, message: 'This field is required' },
-          }}
-        />
-        <TextInput
-          control={control}
-          name="email"
-          placeholder="e.g. stephenking@lorem.com"
-          type="email"
-          rules={{
-            required: { value: true, message: 'This field is required' },
-            pattern: {
-              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: 'Valid email required',
-            },
-          }}
-        />
-        <TextInput
-          control={control}
-          name="phoneNumber"
-          placeholder="e.g. +1 234 567 890"
-          type="tel"
-          rules={{
-            required: { value: true, message: 'This field is required' },
-            pattern: {
-              value: /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-              message: 'Valid phone number required',
-            },
-          }}
-        />
-        <button type="submit" data-testid="nextButton">
-          Next
-        </button>
-      </form>
+      <button
+        type="button"
+        data-testid="nextButton"
+        onClick={() => {
+          handleSubmit(onSubmit)()
+        }}
+      >
+        Next
+      </button>
     </section>
   )
 }
