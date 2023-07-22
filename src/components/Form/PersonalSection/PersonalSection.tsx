@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
+import { PersonalStyled } from './PersonalSection.styled.tsx'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -45,9 +46,9 @@ const PersonalInfo = () => {
   }
 
   return (
-    <section data-testid="personalInfo">
+    <PersonalStyled data-testid="personalInfo">
       <Container>
-        <h2>Personal Info</h2>
+        <h2>Personal info</h2>
         <p>Please provide your name, email address, and phone number.</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextInput
@@ -97,7 +98,7 @@ const PersonalInfo = () => {
       >
         Next
       </button>
-    </section>
+    </PersonalStyled>
   )
 }
 
