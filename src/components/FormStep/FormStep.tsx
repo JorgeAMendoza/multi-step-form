@@ -1,10 +1,10 @@
 import { useAppSelector } from '@/src/redux/hooks.tsx'
-import { StepItem, StepList } from './FormStep.styled'
+import { FormStepStyled, StepItem, StepList } from './FormStep.styled'
 
 const FormStep = () => {
   const { step } = useAppSelector((state) => state.form)
   return (
-    <div data-testid="formSteps">
+    <FormStepStyled data-testid="formSteps">
       <StepList aria-live="polite">
         <StepItem data-active={step === 'personalInfo' ? 'true' : 'false'}>
           <p>Step 1</p>
@@ -35,7 +35,7 @@ const FormStep = () => {
           </p>
         </StepItem>
       </StepList>
-    </div>
+    </FormStepStyled>
   )
 }
 
