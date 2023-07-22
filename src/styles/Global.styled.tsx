@@ -86,7 +86,6 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     overflow-wrap: break-word;
-    hyphens: auto;
   }
 
   #root, #__next {
