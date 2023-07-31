@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { Container } from '@/src/styles/utils/Container.styled'
 
 export const PersonalStyled = styled.section`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   ${Container} {
     background-color: var(--white);
     border-radius: 10px;

@@ -6,6 +6,10 @@ import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
 import { PersonalForm, PersonalStyled } from './PersonalSection.styled.tsx'
+import {
+  Button,
+  ButtonFormContainer,
+} from '@/src/styles/utils/Button.styled.tsx'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -92,15 +96,17 @@ const PersonalInfo = () => {
         </PersonalForm>
       </Container>
 
-      <button
-        type="button"
-        data-testid="nextButton"
-        onClick={() => {
-          handleSubmit(onSubmit)()
-        }}
-      >
-        Next
-      </button>
+      <ButtonFormContainer>
+        <Button
+          type="button"
+          data-testid="nextButton"
+          onClick={() => {
+            handleSubmit(onSubmit)()
+          }}
+        >
+          Next Step
+        </Button>
+      </ButtonFormContainer>
     </PersonalStyled>
   )
 }
