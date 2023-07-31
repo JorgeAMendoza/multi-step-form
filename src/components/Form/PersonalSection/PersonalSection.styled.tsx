@@ -21,3 +21,11 @@ export const PersonalStyled = styled.section`
     }
   }
 `
+
+export const PersonalForm = styled.form`
+  margin-block-start: 2.1rem;
+
+  & > *:not(:last-of-type) {
+    margin-block-end: 1.6rem;
+  }
+`

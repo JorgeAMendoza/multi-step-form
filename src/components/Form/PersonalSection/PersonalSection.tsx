@@ -1,11 +1,11 @@
 import { MultiStepForm } from '@/src/types/form.ts'
-import TextInput from '../../FormInput/TextInput.tsx'
+import TextInput from '../../FormInput/TextInput/TextInput.tsx'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updatePersonalInformation, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
-import { PersonalStyled } from './PersonalSection.styled.tsx'
+import { PersonalForm, PersonalStyled } from './PersonalSection.styled.tsx'
 
 export type PersonalInfoForm = Pick<
   MultiStepForm,
@@ -50,9 +50,10 @@ const PersonalInfo = () => {
       <Container>
         <h2>Personal info</h2>
         <p>Please provide your name, email address, and phone number.</p>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <PersonalForm onSubmit={handleSubmit(onSubmit)}>
           <TextInput
             control={control}
+            labelText="Name"
             name="name"
             placeholder="e.g. Stephen King"
             type="text"
@@ -62,6 +63,7 @@ const PersonalInfo = () => {
           />
           <TextInput
             control={control}
+            labelText="Email address"
             name="email"
             placeholder="e.g. stephenking@lorem.com"
             type="email"
@@ -75,6 +77,7 @@ const PersonalInfo = () => {
           />
           <TextInput
             control={control}
+            labelText="Phone number"
             name="phoneNumber"
             placeholder="e.g. +1 234 567 890"
             type="tel"
@@ -86,7 +89,7 @@ const PersonalInfo = () => {
               },
             }}
           />
-        </form>
+        </PersonalForm>
       </Container>
 
       <button
