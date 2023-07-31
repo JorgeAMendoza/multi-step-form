@@ -1,27 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import UbuntuRegular from '@/src/assets/fonts/Ubuntu-Regular.ttf'
-import UbuntuBold from '@/src/assets/fonts/Ubuntu-Bold.ttf'
-import UbuntuMedium from '@/src/assets/fonts/Ubuntu-Medium.ttf'
 
 const GlobalStyle = createGlobalStyle`
 
-    @font-face {
-    font-family: 'Ubuntu';
-    src: url(${UbuntuRegular}) format('truetype');
-    font-weight: 400;
-    }
-
-    @font-face {
-    font-family: 'Ubuntu';
-    src: url(${UbuntuMedium}) format('truetype');
-    font-weight: 500;
-    }
-
-    @font-face {
-    font-family: 'Ubuntu';
-    src: url(${UbuntuBold}) format('truetype');
-    font-weight: 700;
-    }
   :root {
     --background: #EFF5FF;
     --border-color: #D6D9E6;
