@@ -35,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.6rem;
     background-color: var(--background);
+    position:relative;
   }
   
   img, svg, picture, video {
@@ -55,6 +56,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     background-color: transparent;
     border:none;
+    font-family: inherit;
   }
 
   p,
@@ -70,6 +72,8 @@ const GlobalStyle = createGlobalStyle`
 
   #root, #__next {
   isolation: isolate;
+  height: 100svh;
+  height: 100vh;
 }
 `
 
