@@ -1,9 +1,11 @@
 import { UseControllerProps, useController } from 'react-hook-form'
-import type { PersonalInfoForm } from '../Form/PersonalSection/PersonalSection.tsx'
+import type { PersonalInfoForm } from '../../Form/PersonalSection/PersonalSection.tsx'
+import { InputContainer, InputName } from './TextInput.styled.tsx'
 
 type TextInputProps = UseControllerProps<PersonalInfoForm> & {
   placeholder?: string
   type: 'text' | 'email' | 'tel'
+  labelText: string;
 }
 
 const TextInput = (props: TextInputProps) => {
@@ -11,16 +13,8 @@ const TextInput = (props: TextInputProps) => {
 
   return (
     <div data-testid={`${props.name}Input`}>
-      <div>
-        <label>
-          {props.name}
-          <input
-            {...field}
-            type={props.type}
-            placeholder={props.placeholder ? props.placeholder : ''}
-          />
-        </label>
-
+      <InputName>
+        <label htmlFor={`${props.name}Input`}>{props.labelText}</label>
         {fieldState.isTouched && fieldState.invalid ? (
           <span>
             {fieldState.error?.message
@@ -28,7 +22,15 @@ const TextInput = (props: TextInputProps) => {
               : 'Invalid input'}
           </span>
         ) : null}
-      </div>
+      </InputName>
+      <InputContainer isInvalid={false}>
+        <input
+          {...field}
+          type={props.type}
+          placeholder={props.placeholder ? props.placeholder : ''}
+          id={`${props.name}Input}`}
+        />
+      </InputContainer>
     </div>
   )
 }
