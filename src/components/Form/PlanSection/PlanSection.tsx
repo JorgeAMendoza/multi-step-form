@@ -1,10 +1,17 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import PlanInput from '../../FormInput/PlanInput.tsx'
+import PlanInput from '../../FormInput/PlanInput/PlanInput.tsx'
 import PlanTypeInput from '../../FormInput/PlanTypeInput.tsx'
 import type { MultiStepForm } from '@/src/types/form.ts'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updatePlan, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
+import { PlanForm, PlanStyled } from './PlanSection.styled.tsx'
+import { Container } from '@/src/styles/utils/Container.styled.tsx'
+import {
+  Button,
+  ButtonFormContainerTwo,
+  PreviousButton,
+} from '@/src/styles/utils/Button.styled.tsx'
 
 export type PlanForm = Pick<MultiStepForm, 'plan' | 'subscription'>
 
@@ -35,58 +42,63 @@ const PlanSection = () => {
   const currentSub = watch('subscription')
 
   return (
-    <section data-testid="selectPlan">
-      <h2>Select your plan</h2>
-      <p>You have the option of monthly or yearly billing.</p>
+    <PlanStyled data-testid="selectPlan">
+      <Container>
+        <h2>Select your plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <PlanInput control={control} value="arcade" name="plan">
-            <>
-              <p>{currentSub === 'monthly' ? '$9/mo' : '$90/yr'}</p>
-              {currentSub === 'yearly' ? <p>2 months free</p> : null}
-            </>
-          </PlanInput>
-          <PlanInput control={control} value="advanced" name="plan">
-            <>
-              <p>{currentSub === 'monthly' ? '$12/mo' : '$120/yr'}</p>
-              {currentSub === 'yearly' ? <p>2 months free</p> : null}
-            </>
-          </PlanInput>
-          <PlanInput control={control} value="pro" name="plan">
-            <>
-              <p>{currentSub === 'monthly' ? '$15/mo' : '$150/yr'}</p>
-              {currentSub === 'yearly' ? <p>2 months free</p> : null}
-            </>
-          </PlanInput>
-        </div>
+        <PlanForm onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <PlanInput control={control} value="arcade" name="plan">
+              <>
+                <span>{currentSub === 'monthly' ? '$9/mo' : '$90/yr'}</span>
+                {currentSub === 'yearly' ? <span>2 months free</span> : null}
+              </>
+            </PlanInput>
+            <PlanInput control={control} value="advanced" name="plan">
+              <>
+                <span>{currentSub === 'monthly' ? '$12/mo' : '$120/yr'}</span>
+                {currentSub === 'yearly' ? <span>2 months free</span> : null}
+              </>
+            </PlanInput>
+            <PlanInput control={control} value="pro" name="plan">
+              <>
+                <span>{currentSub === 'monthly' ? '$15/mo' : '$150/yr'}</span>
+                {currentSub === 'yearly' ? <span>2 months free</span> : null}
+              </>
+            </PlanInput>
+          </div>
 
-        <div>
-          <PlanTypeInput
-            control={control}
-            value="monthly"
-            name="subscription"
-          />
-          <PlanTypeInput control={control} value="yearly" name="subscription" />
-        </div>
-
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              dispatch(updatePlan(getValues('plan'), getValues('subscription')))
-              dispatch(updateStep('personalInfo'))
-            }}
-            data-testid="previousButton"
-          >
-            Go Back
-          </button>
-          <button type="submit" data-testid="nextButton">
-            Next
-          </button>
-        </div>
-      </form>
-    </section>
+          <div>
+            <PlanTypeInput
+              control={control}
+              value="monthly"
+              name="subscription"
+            />
+            <PlanTypeInput
+              control={control}
+              value="yearly"
+              name="subscription"
+            />
+          </div>
+        </PlanForm>
+      </Container>
+      <ButtonFormContainerTwo>
+        <PreviousButton
+          type="button"
+          onClick={() => {
+            dispatch(updatePlan(getValues('plan'), getValues('subscription')))
+            dispatch(updateStep('personalInfo'))
+          }}
+          data-testid="previousButton"
+        >
+          Go Back
+        </PreviousButton>
+        <Button type="submit" data-testid="nextButton">
+          Next
+        </Button>
+      </ButtonFormContainerTwo>
+    </PlanStyled>
   )
 }
 
