@@ -1,11 +1,16 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import PlanInput from '../../FormInput/PlanInput/PlanInput.tsx'
-import PlanTypeInput from '../../FormInput/PlanTypeInput.tsx'
+import PlanTypeInput from '../../FormInput/PlanTypeInput/PlanTypeInput.tsx'
 import type { MultiStepForm } from '@/src/types/form.ts'
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import { updatePlan, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
-import { PlanForm, PlanStyled } from './PlanSection.styled.tsx'
+import {
+  PlanForm,
+  PlanStyled,
+  SubscriptionType,
+  SubscriptionTypeToggle,
+} from './PlanSection.styled.tsx'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
 import {
   Button,
@@ -69,18 +74,21 @@ const PlanSection = () => {
             </PlanInput>
           </div>
 
-          <div>
+          <SubscriptionType>
             <PlanTypeInput
               control={control}
               value="monthly"
               name="subscription"
             />
+            <SubscriptionTypeToggle monthly={currentSub === 'monthly'}>
+              <span></span>
+            </SubscriptionTypeToggle>
             <PlanTypeInput
               control={control}
               value="yearly"
               name="subscription"
             />
-          </div>
+          </SubscriptionType>
         </PlanForm>
       </Container>
       <ButtonFormContainerTwo>
