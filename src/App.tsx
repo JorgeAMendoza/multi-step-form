@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux'
-import Form from './components/Form/index.tsx'
+import Form from './components/Form/Form.tsx'
 import FormStep from './components/FormStep/FormStep.tsx'
 import { store } from './redux/store.ts'
 import GlobalStyle from './styles/Global.styled.tsx'
