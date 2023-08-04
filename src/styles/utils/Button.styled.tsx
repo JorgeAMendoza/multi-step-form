@@ -22,9 +22,6 @@ export const ButtonFormContainer = styled.div`
   background-color: var(--white);
   display: flex;
   justify-content: flex-end;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   padding: 1em;
 `
@@ -33,9 +30,6 @@ export const ButtonFormContainerTwo = styled.div`
   background-color: var(--white);
   display: flex;
   justify-content: space-between;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   padding: 1em;
 `

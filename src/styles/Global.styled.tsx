@@ -72,8 +72,6 @@ const GlobalStyle = createGlobalStyle`
 
   #root, #__next {
   isolation: isolate;
-  height: 100svh;
-  height: 100vh;
 }
 `
 
