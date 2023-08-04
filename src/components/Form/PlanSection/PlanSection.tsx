@@ -91,6 +91,7 @@ const PlanSection = () => {
           </SubscriptionType>
         </PlanForm>
       </Container>
+      
       <ButtonFormContainerTwo>
         <PreviousButton
           type="button"
@@ -103,7 +104,7 @@ const PlanSection = () => {
           Go Back
         </PreviousButton>
         <Button type="submit" data-testid="nextButton">
-          Next
+          Next Step
         </Button>
       </ButtonFormContainerTwo>
     </PlanStyled>

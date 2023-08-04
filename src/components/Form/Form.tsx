@@ -8,7 +8,12 @@ const Form = () => {
   const { step } = useAppSelector((state) => state.form)
 
   return (
-    <div>
+    <div
+      style={{
+        transform: 'translateY(-7.3rem)',
+        height: 'calc(100svh - 17.5rem)',
+      }}
+    >
       {step === 'personalInfo' ? <PersonalInfo /> : null}{' '}
       {step === 'plan' ? <PlanSection /> : null}
       {step === 'addOns' ? <AddOnSection /> : null}
