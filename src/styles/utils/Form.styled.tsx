@@ -23,6 +23,7 @@ export const FormSection = styled.section`
       font-size: 1.6rem;
       margin-block-start: 0.35em;
       line-height: 1.5;
+      margin-block-end: 2.2rem;
     }
   }
 `
