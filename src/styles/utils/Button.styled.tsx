@@ -31,5 +31,5 @@ export const ButtonFormContainerTwo = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 1em;
+  padding: 1em 1em 1em 0em;
 `

@@ -16,10 +16,10 @@ export const SubscriptionType = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2.3rem;
-  margin-block-start: 2rem;
+  margin-block-start: 2.3rem;
   background-color: var(--very-light-grey);
   border-radius: 8px;
-  padding: .8em 0;
+  padding: 0.6em 0;
 `
 interface SubscriptionTypeToggleProps {
   monthly: boolean
@@ -31,7 +31,7 @@ export const SubscriptionTypeToggle = styled.div<SubscriptionTypeToggleProps>`
   position: relative;
   background-color: var(--denim);
   border-radius: 10px;
-  margin-block-start: 0.5rem;
+  margin-block-start: .9rem;
 
   span {
     position: absolute;
