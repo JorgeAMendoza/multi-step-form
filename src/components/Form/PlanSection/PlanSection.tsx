@@ -13,8 +13,8 @@ import {
 } from './PlanSection.styled.tsx'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
 import {
-  Button,
   ButtonFormContainerTwo,
+  NextButton,
   PreviousButton,
 } from '@/src/styles/utils/Button.styled.tsx'
 
@@ -91,7 +91,7 @@ const PlanSection = () => {
           </SubscriptionType>
         </PlanForm>
       </Container>
-      
+
       <ButtonFormContainerTwo>
         <PreviousButton
           type="button"
@@ -103,9 +103,15 @@ const PlanSection = () => {
         >
           Go Back
         </PreviousButton>
-        <Button type="submit" data-testid="nextButton">
+        <NextButton
+          type="button"
+          data-testid="nextButton"
+          onClick={() => {
+            handleSubmit(onSubmit)()
+          }}
+        >
           Next Step
-        </Button>
+        </NextButton>
       </ButtonFormContainerTwo>
     </PlanStyled>
   )

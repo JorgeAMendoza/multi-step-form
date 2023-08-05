@@ -7,8 +7,8 @@ import { useEffect } from 'react'
 import { Container } from '@/src/styles/utils/Container.styled.tsx'
 import { PersonalForm, PersonalStyled } from './PersonalSection.styled.tsx'
 import {
-  Button,
   ButtonFormContainer,
+  NextButton,
 } from '@/src/styles/utils/Button.styled.tsx'
 
 export type PersonalInfoForm = Pick<
@@ -97,7 +97,7 @@ const PersonalInfo = () => {
       </Container>
 
       <ButtonFormContainer>
-        <Button
+        <NextButton
           type="button"
           data-testid="nextButton"
           onClick={() => {
@@ -105,7 +105,7 @@ const PersonalInfo = () => {
           }}
         >
           Next Step
-        </Button>
+        </NextButton>
       </ButtonFormContainer>
     </PersonalStyled>
   )
