@@ -77,7 +77,11 @@ const AddOnSection = () => {
         >
           Go Back
         </PreviousButton>
-        <NextButton type="submit" data-testid="nextButton">
+        <NextButton
+          type="submit"
+          data-testid="nextButton"
+          onClick={() => handleSubmit(onSubmit)()}
+        >
           Next Step
         </NextButton>
       </ButtonFormContainerTwo>
