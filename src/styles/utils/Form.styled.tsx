@@ -18,7 +18,7 @@ export const FormSection = styled.section`
       font-size: 2.4rem;
     }
 
-    p {
+    & > p {
       color: var(--grey);
       font-size: 1.6rem;
       margin-block-start: 0.35em;
