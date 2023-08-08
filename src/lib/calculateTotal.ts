@@ -1,4 +1,4 @@
-import type { FormTotal } from '../components/Form/Confirmation.tsx'
+import type { FormTotal } from '../components/Form/Confirmation/Confirmation.tsx'
 import type { AddOns, GamingPlans } from '../types/redux.ts'
 import type { FormStore, Prices } from '../types/redux.ts'
 
@@ -20,7 +20,8 @@ const calculateTotal = (
       addOnTotal += addOnPrice
       addOnList.push([key, addOnPrice])
     }
-  }``
+  }
+  ;``
 
   const priceSummary: FormTotal = {
     addOnPrice: addOnList,

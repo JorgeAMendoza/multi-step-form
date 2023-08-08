@@ -4,6 +4,14 @@ import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
 import { resetForm, updateStep } from '@/src/redux/reducer.ts'
 import convertToTitleCase from '@/src/lib/convertToTitleCase.ts'
+import { ConfirmationStyled } from './Confirmation.styled'
+import { Container } from '@/src/styles/utils/Container.styled'
+import {
+  ButtonFormContainerTwo,
+  ConfirmButton,
+  NextButton,
+  PreviousButton,
+} from '@/src/styles/utils/Button.styled'
 
 const Submission = () => {
   const dispatch = useAppDispatch()
@@ -53,58 +61,60 @@ const Confirmation = () => {
   if (formSubmitted) return <Submission />
 
   return (
-    <section data-testid="confirmation">
-      <h2>Finishing up</h2>
-      <p>Double-check everything looks OK before confirming</p>
+    <ConfirmationStyled data-testid="confirmation">
+      <Container>
+        <h2>Finishing up</h2>
+        <p>Double-check everything looks OK before confirming</p>
 
-      <div>
-        <div data-testid="planInformation">
-          <p>
-            {plan} ({subscription})
-            <button
-              type="button"
-              onClick={() => {
-                dispatch(updateStep('plan'))
-              }}
-            >
-              Change
-            </button>
-          </p>
-
-          <p>
-            ${formTotal.planPrice}
-            {subscription === 'monthly' ? '/mo' : '/yr'}
-          </p>
-        </div>
-
-        {/* Add-ons */}
         <div>
-          <ul data-testid="addOnInformation">
-            {formTotal.addOnPrice.map(([addOn, price]) => (
-              <li key={addOn}>
-                <p data-testid={`${addOn}Price`}>
-                  {convertToTitleCase(addOn)}{' '}
-                  <span>
-                    +${price}
-                    {subscription === 'monthly' ? '/mo' : '/yr'}
-                  </span>
-                </p>
-              </li>
-            ))}
-          </ul>
+          <div data-testid="planInformation">
+            <p>
+              {plan} ({subscription})
+              <button
+                type="button"
+                onClick={() => {
+                  dispatch(updateStep('plan'))
+                }}
+              >
+                Change
+              </button>
+            </p>
+
+            <p>
+              ${formTotal.planPrice}
+              {subscription === 'monthly' ? '/mo' : '/yr'}
+            </p>
+          </div>
+
+          {/* Add-ons */}
+          <div>
+            <ul data-testid="addOnInformation">
+              {formTotal.addOnPrice.map(([addOn, price]) => (
+                <li key={addOn}>
+                  <p data-testid={`${addOn}Price`}>
+                    {convertToTitleCase(addOn)}{' '}
+                    <span>
+                      +${price}
+                      {subscription === 'monthly' ? '/mo' : '/yr'}
+                    </span>
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <p data-testid="total">
-        Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
-        <span>
-          +${formTotal.totalPrice}
-          {subscription === 'monthly' ? '/mo' : '/yr'}
-        </span>
-      </p>
+        <p data-testid="total">
+          Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
+          <span>
+            +${formTotal.totalPrice}
+            {subscription === 'monthly' ? '/mo' : '/yr'}
+          </span>
+        </p>
+      </Container>
 
-      <div>
-        <button
+      <ButtonFormContainerTwo>
+        <PreviousButton
           type="button"
           onClick={() => {
             dispatch(updateStep('addOns'))
@@ -112,8 +122,8 @@ const Confirmation = () => {
           data-testid="previousButton"
         >
           Go Back
-        </button>
-        <button
+        </PreviousButton>
+        <ConfirmButton
           type="button"
           onClick={() => {
             setSubmittingForm(true)
@@ -125,9 +135,9 @@ const Confirmation = () => {
           data-testid="confirmButton"
         >
           Confirm
-        </button>
-      </div>
-    </section>
+        </ConfirmButton>
+      </ButtonFormContainerTwo>
+    </ConfirmationStyled>
   )
 }
 

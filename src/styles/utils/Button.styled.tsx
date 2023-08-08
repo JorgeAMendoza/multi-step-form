@@ -13,6 +13,12 @@ export const NextButton = styled(Button)`
   color: var(--white);
 `
 
+export const ConfirmButton = styled(Button)`
+  background-color: var(--purple);
+  color: var(--white);
+  padding: 0.65em 1.6em;
+`
+
 export const PreviousButton = styled(Button)`
   background-color: transparent;
   color: var(--grey);
