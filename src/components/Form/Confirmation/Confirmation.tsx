@@ -4,7 +4,12 @@ import { useAppDispatch, useAppSelector } from '@/src/redux/hooks.tsx'
 import calculateTotal from '@/src/lib/calculateTotal.ts'
 import { resetForm, updateStep } from '@/src/redux/reducer.ts'
 import convertToTitleCase from '@/src/lib/convertToTitleCase.ts'
-import { ConfirmationStyled } from './Confirmation.styled'
+import {
+  AddOnInfo,
+  ConfirmationInfo,
+  ConfirmationStyled,
+  PlanInfo,
+} from './Confirmation.styled'
 import { Container } from '@/src/styles/utils/Container.styled'
 import {
   ButtonFormContainerTwo,
@@ -66,8 +71,8 @@ const Confirmation = () => {
         <h2>Finishing up</h2>
         <p>Double-check everything looks OK before confirming</p>
 
-        <div>
-          <div data-testid="planInformation">
+        <ConfirmationInfo>
+          <PlanInfo data-testid="planInformation">
             <p>
               {plan} ({subscription})
               <button
@@ -84,25 +89,26 @@ const Confirmation = () => {
               ${formTotal.planPrice}
               {subscription === 'monthly' ? '/mo' : '/yr'}
             </p>
-          </div>
+          </PlanInfo>
 
           {/* Add-ons */}
-          <div>
+          <AddOnInfo>
             <ul data-testid="addOnInformation">
               {formTotal.addOnPrice.map(([addOn, price]) => (
                 <li key={addOn}>
                   <p data-testid={`${addOn}Price`}>
                     {convertToTitleCase(addOn)}{' '}
-                    <span>
-                      +${price}
-                      {subscription === 'monthly' ? '/mo' : '/yr'}
-                    </span>
+                  </p>
+
+                  <p>
+                    +${price}
+                    {subscription === 'monthly' ? '/mo' : '/yr'}
                   </p>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </AddOnInfo>
+        </ConfirmationInfo>
 
         <p data-testid="total">
           Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
