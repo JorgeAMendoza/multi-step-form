@@ -1,5 +1,6 @@
+import { Container } from '@/src/styles/utils/Container.styled'
 import { FormSection } from '@/src/styles/utils/Form.styled'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const ConfirmationStyled = styled(FormSection)``
 
@@ -76,5 +77,31 @@ export const TotalPrice = styled.div`
   p: last-of-type {
     color: var(--purple);
     font-weight: bold;
+  }
+`
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+export const ConfirmingFormStyled = styled(ConfirmationStyled)`
+  ${Container} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > div {
+      width: 50%;
+      aspect-ratio: 1/1;
+      margin: 5rem auto;
+      border: 5px solid var(--white);
+      border-bottom: 5px solid var(--purple);
+      border-radius: 50%;
+      animation: ${rotate} 1s linear infinite;
+    }
   }
 `

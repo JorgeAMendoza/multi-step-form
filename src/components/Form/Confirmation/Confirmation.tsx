@@ -8,6 +8,7 @@ import {
   AddOnInfo,
   ConfirmationInfo,
   ConfirmationStyled,
+  ConfirmingFormStyled,
   PlanInfo,
   TotalPrice,
 } from './Confirmation.styled'
@@ -41,6 +42,16 @@ const Submission = () => {
   )
 }
 
+const ConfirmingForm = () => {
+  return (
+    <ConfirmingFormStyled data-testid="confirmation">
+      <Container>
+        <div></div>
+      </Container>
+    </ConfirmingFormStyled>
+  )
+}
+
 export type FormTotal = {
   planPrice: number
   totalPrice: number
@@ -53,7 +64,7 @@ const Confirmation = () => {
   )
   const dispatch = useAppDispatch()
   const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
-  const [submittingForm, setSubmittingForm] = useState(false)
+  const [submittingForm, setSubmittingForm] = useState(true)
   const [formSubmitted, setFormSubmitted] = useState(false)
 
   useEffect(() => {
@@ -62,7 +73,7 @@ const Confirmation = () => {
   }, [addOns, plan, prices, subscription])
 
   if (!formTotal) return null
-  if (submittingForm) return <p>Submitting form..., spinner here</p>
+  if (submittingForm) return <ConfirmingForm />
   if (formSubmitted) return <Submission />
 
   return (
