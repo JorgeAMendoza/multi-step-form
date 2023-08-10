@@ -61,3 +61,20 @@ export const AddOnInfo = styled.div`
     }
   }
 `
+
+export const TotalPrice = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 2.2rem;
+  padding: 0 1em;
+
+  p:first-of-type {
+    font-size: 1.4rem;
+    color: var(--grey);
+  }
+
+  p: last-of-type {
+    color: var(--purple);
+    font-weight: bold;
+  }
+`

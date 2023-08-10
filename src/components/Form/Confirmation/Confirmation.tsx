@@ -9,12 +9,12 @@ import {
   ConfirmationInfo,
   ConfirmationStyled,
   PlanInfo,
+  TotalPrice,
 } from './Confirmation.styled'
 import { Container } from '@/src/styles/utils/Container.styled'
 import {
   ButtonFormContainerTwo,
   ConfirmButton,
-  NextButton,
   PreviousButton,
 } from '@/src/styles/utils/Button.styled'
 
@@ -110,13 +110,15 @@ const Confirmation = () => {
           </AddOnInfo>
         </ConfirmationInfo>
 
-        <p data-testid="total">
-          Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;{' '}
-          <span>
+        <TotalPrice data-testid="total">
+          <p>
+            Total &#40;per {subscription === 'monthly' ? 'month' : 'year'}&#41;
+          </p>
+          <p>
             +${formTotal.totalPrice}
             {subscription === 'monthly' ? '/mo' : '/yr'}
-          </span>
-        </p>
+          </p>
+        </TotalPrice>
       </Container>
 
       <ButtonFormContainerTwo>
