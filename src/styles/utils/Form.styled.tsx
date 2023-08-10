@@ -12,6 +12,7 @@ export const FormSection = styled.section`
     border-radius: 10px;
     padding: 1.8em 1.6em;
     margin-block-end: 2.7rem;
+    box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.1);
 
     h2 {
       color: var(--denim);
