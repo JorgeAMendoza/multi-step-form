@@ -105,3 +105,26 @@ export const ConfirmingFormStyled = styled(ConfirmationStyled)`
     }
   }
 `
+
+export const SubmissionStyled = styled(ConfirmationStyled)`
+  ${Container} {
+    text-align: center;
+    padding: 5em 1em;
+    img {
+      width: 5.6rem;
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+
+      margin-block-end: 2.2rem;
+    }
+    p {
+      margin: 0;
+      margin-block-end: 2rem;
+    }
+
+    button {
+      font-weight: bold;
+      color: var(--purple);
+    }
+  }
+`

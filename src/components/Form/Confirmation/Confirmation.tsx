@@ -10,6 +10,7 @@ import {
   ConfirmationStyled,
   ConfirmingFormStyled,
   PlanInfo,
+  SubmissionStyled,
   TotalPrice,
 } from './Confirmation.styled'
 import { Container } from '@/src/styles/utils/Container.styled'
@@ -18,27 +19,30 @@ import {
   ConfirmButton,
   PreviousButton,
 } from '@/src/styles/utils/Button.styled'
+import thankYouIcon from '@/src/assets/images/icon-thank-you.svg'
 
 const Submission = () => {
   const dispatch = useAppDispatch()
   return (
-    <div data-testid="thankYouMessage">
-      <p>checkmark image</p>
-      <h2>Thank you!</h2>
-      <p>
-        Thanks for confirming your subscription! We hope you have fun using our
-        platform. If you ever need support, please feel free to email us at
-        support@loremgaming.com.
-      </p>
-      <button
-        type="button"
-        onClick={() => {
-          dispatch(resetForm())
-        }}
-      >
-        Click here to start over!
-      </button>
-    </div>
+    <SubmissionStyled data-testid="thankYouMessage">
+      <Container>
+        <img src={thankYouIcon} alt="checkmark" />
+        <h2>Thank you!</h2>
+        <p>
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            dispatch(resetForm())
+          }}
+        >
+          Click here to start over!
+        </button>
+      </Container>
+    </SubmissionStyled>
   )
 }
 
@@ -64,7 +68,7 @@ const Confirmation = () => {
   )
   const dispatch = useAppDispatch()
   const [formTotal, setFormTotal] = useState<FormTotal | null>(null)
-  const [submittingForm, setSubmittingForm] = useState(true)
+  const [submittingForm, setSubmittingForm] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
 
   useEffect(() => {
