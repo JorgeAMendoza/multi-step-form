@@ -11,7 +11,7 @@ export const PlanInputStyled = styled.div<PlanInputStyledProps>`
   background-color: ${({ checked }) =>
     checked ? 'var(--very-light-grey)' : 'var(--white)'};
   border-radius: 8px;
-  padding: .9em 0.9em;
+  padding: 0.9em 0.9em;
 `
 
 export const PlanLabel = styled.label`
