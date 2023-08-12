@@ -74,7 +74,7 @@ export const TotalPrice = styled.div`
     color: var(--grey);
   }
 
-  p: last-of-type {
+  p:last-of-type {
     color: var(--purple);
     font-weight: bold;
   }
