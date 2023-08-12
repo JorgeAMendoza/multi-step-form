@@ -3,22 +3,18 @@ import PersonalInfo from './PersonalSection/PersonalSection.tsx'
 import PlanSection from './PlanSection/PlanSection.tsx'
 import AddOnSection from './AddOnSection/AddOnSection.tsx'
 import Confirmation from './Confirmation/Confirmation.tsx'
+import { FormSection } from './Form.styled.tsx'
 
 const Form = () => {
   const { step } = useAppSelector((state) => state.form)
 
   return (
-    <div
-      style={{
-        transform: 'translateY(-7.3rem)',
-        height: 'calc(100svh - 17.5rem)',
-      }}
-    >
+    <FormSection>
       {step === 'personalInfo' ? <PersonalInfo /> : null}{' '}
       {step === 'plan' ? <PlanSection /> : null}
       {step === 'addOns' ? <AddOnSection /> : null}
       {step === 'confirmation' ? <Confirmation /> : null}
-    </div>
+    </FormSection>
   )
 }
 
