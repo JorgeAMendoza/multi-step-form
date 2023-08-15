@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import device from './device'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -36,6 +37,14 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.6rem;
     background-color: var(--background);
     position:relative;
+    
+    @media screen and (${device.laptop}) {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      min-height: 100svh;
+    }
   }
   
   img, svg, picture, video {

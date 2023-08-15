@@ -3,15 +3,16 @@ import Form from './components/Form/Form.tsx'
 import FormStep from './components/FormStep/FormStep.tsx'
 import { store } from './redux/store.ts'
 import GlobalStyle from './styles/Global.styled.tsx'
+import { FormContainer } from './App.styled.tsx'
 
 export const MultiStepForm = () => {
   return (
     <main>
       <GlobalStyle />
-      <section>
+      <FormContainer>
         <FormStep />
         <Form />
-      </section>
+      </FormContainer>
     </main>
   )
 }
