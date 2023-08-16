@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import device from '@/src/styles/device'
 
 export const TextInputStyled = styled.div``
 
@@ -16,6 +17,14 @@ export const InputName = styled.div`
   span {
     color: var(--error-red);
     font-weight: bold;
+  }
+
+  @media screen and (${device.laptop}) {
+    font-size: 1.4rem;
+
+    label {
+      margin-block-end: 0.4rem;
+    }
   }
 `
 
@@ -39,5 +48,13 @@ export const InputContainer = styled.div<InputContainerProps>`
 
   input::placeholder {
     color: var(--grey);
+  }
+
+  @media screen and (${device.laptop}) {
+    input {
+      border-radius: 8px;
+      font-size: 1.6rem;
+      padding: .9em 1em;
+    }
   }
 `
