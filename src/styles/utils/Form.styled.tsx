@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container } from './Container.styled'
+import device from '../device'
 
 export const FormSection = styled.section`
   height: calc(100svh - 9.9rem);
@@ -26,6 +27,28 @@ export const FormSection = styled.section`
       margin-block-start: 0.35em;
       line-height: 1.5;
       margin-block-end: 2.2rem;
+    }
+  }
+
+  @media screen and (${device.laptop}) {
+    justify-content: flex-start;
+    height: fit-content;
+    width: 86.5%;
+    padding-left: 6.2em;
+    padding-top: 2.1em;
+
+    ${Container} {
+      padding: 0;
+      width: 100%;
+      box-shadow: none;
+
+      h2 {
+        font-size: 3.2rem;
+      }
+
+      & > p {
+        margin-block-end: 3.5rem;
+      }
     }
   }
 `
