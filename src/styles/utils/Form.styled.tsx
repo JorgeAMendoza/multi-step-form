@@ -31,8 +31,7 @@ export const FormSection = styled.section`
   }
 
   @media screen and (${device.laptop}) {
-    justify-content: flex-start;
-    height: fit-content;
+    height: 100%;
     width: 86.5%;
     padding-left: 6.2em;
     padding-top: 2.1em;

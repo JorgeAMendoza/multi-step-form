@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import device from '../device'
 
 export const Button = styled.button`
   border-radius: 4px;
@@ -6,6 +7,12 @@ export const Button = styled.button`
   padding: 0.65em 1.2em;
   font-size: 1.4rem;
   font-weight: 500;
+
+  @media screen and (${device.laptop}) {
+    font-size: 1.6rem;
+    padding: 0.75em 1.5em;
+    border-radius: 8px;
+  }
 `
 
 export const NextButton = styled(Button)`
@@ -30,6 +37,11 @@ export const ButtonFormContainer = styled.div`
   justify-content: flex-end;
   width: 100%;
   padding: 1em;
+
+  @media screen and (${device.laptop}) {
+    padding: 0;
+    margin-block-end: 1.7rem;
+  }
 `
 
 export const ButtonFormContainerTwo = styled.div`

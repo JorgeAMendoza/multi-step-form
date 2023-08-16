@@ -8,7 +8,7 @@ export const FormSection = styled.section`
 
   @media screen and (${device.laptop}) {
     transform: translateY(0);
-    height: fit-content;
+    height: 100%;
     background-color: var(--white);
   }
 `
