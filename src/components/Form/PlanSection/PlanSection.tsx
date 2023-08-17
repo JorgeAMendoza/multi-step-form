@@ -7,6 +7,7 @@ import { updatePlan, updateStep } from '@/src/redux/reducer.ts'
 import { useEffect } from 'react'
 import {
   PlanForm,
+  PlanOptions,
   PlanStyled,
   SubscriptionType,
   SubscriptionTypeToggle,
@@ -53,7 +54,7 @@ const PlanSection = () => {
         <p>You have the option of monthly or yearly billing.</p>
 
         <PlanForm onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <PlanOptions>
             <PlanInput control={control} value="arcade" name="plan">
               <>
                 <span>{currentSub === 'monthly' ? '$9/mo' : '$90/yr'}</span>
@@ -72,7 +73,7 @@ const PlanSection = () => {
                 {currentSub === 'yearly' ? <span>2 months free</span> : null}
               </>
             </PlanInput>
-          </div>
+          </PlanOptions>
 
           <SubscriptionType>
             <PlanTypeInput

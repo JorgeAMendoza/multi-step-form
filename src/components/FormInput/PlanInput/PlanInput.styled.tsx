@@ -1,3 +1,4 @@
+import device from '@/src/styles/device'
 import styled from 'styled-components'
 
 interface PlanInputStyledProps {
@@ -12,6 +13,7 @@ export const PlanInputStyled = styled.div<PlanInputStyledProps>`
     checked ? 'var(--very-light-grey)' : 'var(--white)'};
   border-radius: 8px;
   padding: 0.9em 0.9em;
+  flex: 1;
 `
 
 export const PlanLabel = styled.label`
@@ -21,7 +23,6 @@ export const PlanLabel = styled.label`
     'image name'
     'image price'
     'image savings';
-  /* gap: 0.3rem; */
   cursor: pointer;
 
   input {
@@ -61,5 +62,22 @@ export const PlanLabel = styled.label`
   span:nth-of-type(2),
   span:nth-of-type(3) {
     margin-left: 1.3rem;
+  }
+
+  @media screen and (${device.laptop}) {
+    display: block;
+    height: 100%;
+
+    span:nth-of-type(1),
+    span:nth-of-type(2),
+    span:nth-of-type(3) {
+      margin-left: 0;
+      display: block;
+      margin-top: 0;
+    }
+
+    span:nth-of-type(1) {
+      margin-block-start: 4rem;
+    }
   }
 `

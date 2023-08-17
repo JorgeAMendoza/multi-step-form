@@ -1,11 +1,26 @@
 import styled from 'styled-components'
 import { FormSection } from '@/src/styles/utils/Form.styled'
+import device from '@/src/styles/device'
 
 export const PlanStyled = styled(FormSection)``
 
 export const PlanForm = styled.form`
   & > div:nth-of-type(1) > *:not(:last-of-type) {
     margin-block-end: 1.3rem;
+  }
+
+  @media screen and (${device.laptop}) {
+    & > div:nth-of-type(1) > *:not(:last-of-type) {
+      margin-block-end: 0;
+    }
+  }
+`
+
+export const PlanOptions = styled.div`
+  @media screen and (${device.laptop}) {
+    display: flex;
+    min-height: 16rem;
+    gap: 1.9rem;
   }
 `
 
@@ -29,7 +44,7 @@ export const SubscriptionTypeToggle = styled.div<SubscriptionTypeToggleProps>`
   position: relative;
   background-color: var(--denim);
   border-radius: 10px;
-  margin-block-start: .9rem;
+  margin-block-start: 0.9rem;
 
   span {
     position: absolute;
