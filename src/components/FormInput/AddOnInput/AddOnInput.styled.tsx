@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import device from '@/src/styles/device'
 
 interface AddOnInputStyledProps {
   checked: boolean
@@ -92,5 +93,24 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
   & > span:nth-of-type(2),
   & > span:nth-of-type(3) {
     margin-left: 1.3rem;
+  }
+
+  @media screen and (${device.laptop}) {
+    padding: 1.1em 1.5em;
+    gap: .2rem;
+
+    & > span:nth-of-type(2) {
+      font-size: 1.6rem;
+    }
+
+    & > span:nth-of-type(3),
+    & > span:nth-of-type(4) {
+      font-size: 1.4rem;
+    }
+
+    & > span:nth-of-type(2),
+    & > span:nth-of-type(3) {
+      margin-left: 2rem;
+    }
   }
 `

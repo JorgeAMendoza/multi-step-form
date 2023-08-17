@@ -46,7 +46,7 @@ const AddOnSection = () => {
           <AddOnInput
             control={control}
             name="onlineService"
-            addOnTitle="Online Service"
+            addOnTitle="Online service"
             addOnDesc="Access to multiplayer games"
             addOnPrice={subscription === 'monthly' ? '+$1/mo' : '+$10/yr'}
           />
