@@ -33,6 +33,10 @@ export const SubscriptionType = styled.div`
   background-color: var(--very-light-grey);
   border-radius: 8px;
   padding: 0.6em 0;
+
+  @media screen and (${device.laptop}) {
+    margin-block-start: 3rem;
+  }
 `
 interface SubscriptionTypeToggleProps {
   monthly: boolean

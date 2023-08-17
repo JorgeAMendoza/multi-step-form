@@ -8,7 +8,7 @@ interface SubscriptionLabelProps {
 
 export const SubscriptionLabel = styled.label<SubscriptionLabelProps>`
   color: ${({ checked }) => (checked ? 'var(--denim)' : 'var(--grey)')};
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1.4rem;
   text-transform: capitalize;
   position: relative;

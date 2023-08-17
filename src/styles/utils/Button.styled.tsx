@@ -29,6 +29,10 @@ export const ConfirmButton = styled(Button)`
 export const PreviousButton = styled(Button)`
   background-color: transparent;
   color: var(--grey);
+
+  @media screen and (${device.laptop}) {
+    padding-left: 0;
+  }
 `
 
 export const ButtonFormContainer = styled.div`
@@ -50,4 +54,9 @@ export const ButtonFormContainerTwo = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 1em 1em 1em 0em;
+
+  @media screen and (${device.laptop}) {
+    padding: 0;
+    margin-block-end: 1.7rem;
+  }
 `
