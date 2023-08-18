@@ -139,6 +139,13 @@ export const ConfirmingFormStyled = styled(ConfirmationStyled)`
       animation: ${rotate} 1s linear infinite;
     }
   }
+
+  @media screen and (${device.laptop}) {
+    ${Container} {
+      justify-content: center;
+      height: 100%;
+    }
+  }
 `
 
 export const SubmissionStyled = styled(ConfirmationStyled)`
@@ -160,6 +167,22 @@ export const SubmissionStyled = styled(ConfirmationStyled)`
     button {
       font-weight: bold;
       color: var(--purple);
+    }
+  }
+
+  @media screen and (${device.laptop}) {
+    ${Container} {
+      margin-block-start: 5rem;
+      padding: 5em 0.2em;
+
+      img {
+        width: 8rem;
+        margin-block-end: 2.6rem;
+      }
+
+      p {
+        margin-block-start: 1rem;
+      }
     }
   }
 `
