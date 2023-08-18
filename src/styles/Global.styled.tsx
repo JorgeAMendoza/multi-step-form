@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
     --very-light-grey: #F8F9FF;
     --white: #FFFFFF;
     --button-active: #164A8A;
+    --button-confirm-active: #928CFF;
   }
 
   html {

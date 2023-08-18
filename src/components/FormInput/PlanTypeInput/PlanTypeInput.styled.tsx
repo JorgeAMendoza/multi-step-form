@@ -13,6 +13,7 @@ export const SubscriptionLabel = styled.label<SubscriptionLabelProps>`
   text-transform: capitalize;
   position: relative;
   transition: color 0.3s ease-in-out;
+  cursor: pointer;
   input {
     opacity: 0;
     position: absolute;

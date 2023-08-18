@@ -15,9 +15,8 @@ export const PlanInputStyled = styled.div<PlanInputStyledProps>`
   padding: 0.9em 0.9em;
   flex: 1;
 
-  &:hover{
+  &:hover {
     border: 1px solid var(--purple);
-    
   }
 `
 

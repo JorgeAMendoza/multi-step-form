@@ -29,6 +29,10 @@ export const ConfirmButton = styled(Button)`
   color: var(--white);
   padding: 0.65em 1.6em;
 
+  &:hover{
+    background-color: var(--button-confirm-active);
+  }
+
   @media screen and (${device.laptop}) {
     padding: 0.65em 2em;
   }

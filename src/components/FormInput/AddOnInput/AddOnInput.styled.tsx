@@ -18,6 +18,7 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
     checked ? 'var(--very-light-grey)' : 'var(--white)'};
   border-radius: 8px;
   padding: 0em 1em;
+  cursor: pointer;
 
   & > span:first-of-type {
     grid-area: check;
@@ -97,7 +98,7 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
 
   @media screen and (${device.laptop}) {
     padding: 1.1em 1.5em;
-    gap: .2rem;
+    gap: 0.2rem;
 
     & > span:nth-of-type(2) {
       font-size: 1.6rem;
