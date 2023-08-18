@@ -20,7 +20,7 @@ export type AddOnForm = Pick<
 const AddOnSection = () => {
   const { subscription, addOns } = useAppSelector((state) => state.form)
   const dispatch = useAppDispatch()
-  const { control, handleSubmit, reset } = useForm<AddOnForm>({
+  const { control, handleSubmit, reset, getValues } = useForm<AddOnForm>({
     defaultValues: {
       onlineService: false,
       largerStorage: false,
@@ -72,6 +72,13 @@ const AddOnSection = () => {
           type="button"
           data-testid="previousButton"
           onClick={() => {
+            dispatch(
+              updateAddOns({
+                onlineService: getValues('onlineService'),
+                largerStorage: getValues('largerStorage'),
+                customProfile: getValues('customProfile'),
+              })
+            )
             dispatch(updateStep('plan'))
           }}
         >
