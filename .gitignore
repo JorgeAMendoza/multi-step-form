@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 cypress/videos
+cypress/screenshots
 pixel-perfect
 
 # Editor directories and files
