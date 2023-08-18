@@ -42,7 +42,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     background-color: transparent;
     outline: transparent;
     border: ${({ isInvalid }) =>
-      isInvalid ? '1px solid var(--error-red)' : '1px solid var(--grey)'};
+      isInvalid ? '1px solid var(--error-red)' : '1px solid var(--light-grey)'};
     border-radius: 4px;
     padding: 0.7em 1em;
   }
