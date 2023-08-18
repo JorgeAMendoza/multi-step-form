@@ -1,6 +1,7 @@
 import { Container } from '@/src/styles/utils/Container.styled'
 import { FormSection } from '@/src/styles/utils/Form.styled'
 import styled, { keyframes } from 'styled-components'
+import device from '@/src/styles/device'
 
 export const ConfirmationStyled = styled(FormSection)``
 
@@ -8,6 +9,11 @@ export const ConfirmationInfo = styled.div`
   background-color: var(--very-light-grey);
   border-radius: 8px;
   padding: 1em;
+
+  @media screen and (${device.laptop}) {
+    padding: 1em 1.4em;
+    padding-bottom: 1.4em;
+  }
 `
 
 export const PlanInfo = styled.div`
@@ -29,6 +35,7 @@ export const PlanInfo = styled.div`
       align-self: start;
       text-decoration: underline;
       color: var(--grey);
+      font-size: 1.4rem;
     }
   }
 
@@ -36,6 +43,21 @@ export const PlanInfo = styled.div`
     font-size: 1.4rem;
     color: var(--denim);
     font-weight: bold;
+  }
+
+  @media screen and (${device.laptop}) {
+    padding-bottom: 1.3em;
+    p:first-of-type {
+      font-size: 1.6rem;
+
+      button {
+        margin-top: 0.4rem;
+      }
+    }
+
+    p:last-of-type {
+      font-size: 1.6rem;
+    }
   }
 `
 
@@ -60,12 +82,17 @@ export const AddOnInfo = styled.div`
     &:not(:last-of-type) {
       margin-block-end: 1.2rem;
     }
+
+    @media screen and (${device.laptop}) {
+      margin-block-start: 1.6rem;
+    }
   }
 `
 
 export const TotalPrice = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-block-start: 2.2rem;
   padding: 0 1em;
 
@@ -77,6 +104,14 @@ export const TotalPrice = styled.div`
   p:last-of-type {
     color: var(--purple);
     font-weight: bold;
+  }
+
+  @media screen and (${device.laptop}) {
+    padding: 0 1.4em;
+
+    p:last-of-type {
+      font-size: 2rem;
+    }
   }
 `
 

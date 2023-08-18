@@ -24,6 +24,10 @@ export const ConfirmButton = styled(Button)`
   background-color: var(--purple);
   color: var(--white);
   padding: 0.65em 1.6em;
+
+  @media screen and (${device.laptop}) {
+    padding: .65em 2em;
+  }
 `
 
 export const PreviousButton = styled(Button)`
