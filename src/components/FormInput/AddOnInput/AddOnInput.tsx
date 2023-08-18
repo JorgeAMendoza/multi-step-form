@@ -13,21 +13,21 @@ const AddOnInput = (props: AddOnInputProps) => {
 
   return (
     <AddOnInputStyled checked={field.value} data-testid={`${props.name}Input`}>
+      <input
+        type="checkbox"
+        id={props.name}
+        name={props.name}
+        onChange={() => {
+          if (field.value) {
+            field.onChange(false)
+          } else {
+            field.onChange(true)
+          }
+        }}
+        checked={field.value}
+        aria-label={`check to add the ${props.addOnTitle} add-on to your order`}
+      />
       <span>
-        <input
-          type="checkbox"
-          id={props.name}
-          name={props.name}
-          onChange={() => {
-            if (field.value) {
-              field.onChange(false)
-            } else {
-              field.onChange(true)
-            }
-          }}
-          checked={field.value}
-          aria-label={`check to add the ${props.addOnTitle} add-on to your order`}
-        />
         <span></span>
       </span>
 

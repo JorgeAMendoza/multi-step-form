@@ -14,7 +14,7 @@ describe('Personal info form section', () => {
   })
 
   it('should be on the personal info step by default', () => {
-    cy.get('@formStepTitle').should('contain.text', 'Personal Info')
+    cy.get('@formStepTitle').should('contain.text', 'Personal info')
     cy.get('@personalInfo').should('exist')
 
     cy.get('@formSteps')

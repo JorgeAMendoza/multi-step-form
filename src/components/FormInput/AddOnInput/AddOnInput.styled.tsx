@@ -19,6 +19,26 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
   border-radius: 8px;
   padding: 0em 1em;
   cursor: pointer;
+  position: relative;
+
+  input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  input:checked + span {
+    background-color: var(--purple);
+  }
+
+  input:checked + span > span {
+    border: none;
+  }
+
+  input:checked + span:before {
+    display: block;
+  }
 
   & > span:first-of-type {
     grid-area: check;
@@ -27,13 +47,6 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
     aspect-ratio: 1/1;
     position: relative;
     border-radius: 4px;
-
-    input {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
 
     span {
       width: 2rem;
@@ -55,15 +68,6 @@ export const AddOnInputStyled = styled.label<AddOnInputStyledProps>`
       border: solid white;
       border-width: 0 2px 2px 0;
       transform: scaleX(-1) rotate(45deg);
-    }
-
-    input:checked + span {
-      background-color: var(--purple);
-      border: none;
-    }
-
-    input:checked + span:before {
-      display: block;
     }
   }
 
