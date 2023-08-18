@@ -23,7 +23,7 @@ const TextInput = (props: TextInputProps) => {
           </span>
         ) : null}
       </InputName>
-      <InputContainer isInvalid={false}>
+      <InputContainer isInvalid={fieldState.error !== undefined}>
         <input
           {...field}
           type={props.type}

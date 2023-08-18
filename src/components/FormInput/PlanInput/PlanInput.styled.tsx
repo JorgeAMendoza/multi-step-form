@@ -14,6 +14,11 @@ export const PlanInputStyled = styled.div<PlanInputStyledProps>`
   border-radius: 8px;
   padding: 0.9em 0.9em;
   flex: 1;
+
+  &:hover{
+    border: 1px solid var(--purple);
+    
+  }
 `
 
 export const PlanLabel = styled.label`

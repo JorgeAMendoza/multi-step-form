@@ -41,7 +41,8 @@ export const InputContainer = styled.div<InputContainerProps>`
     font-size: 1.5rem;
     background-color: transparent;
     outline: transparent;
-    border: 1px solid var(--border-color);
+    border: ${({ isInvalid }) =>
+      isInvalid ? '1px solid var(--error-red)' : '1px solid var(--grey)'};
     border-radius: 4px;
     padding: 0.7em 1em;
   }
@@ -50,11 +51,15 @@ export const InputContainer = styled.div<InputContainerProps>`
     color: var(--grey);
   }
 
+  input:focus {
+    border: 1px solid var(--purple);
+  }
+
   @media screen and (${device.laptop}) {
     input {
       border-radius: 8px;
       font-size: 1.6rem;
-      padding: .9em 1em;
+      padding: 0.9em 1em;
     }
   }
 `
