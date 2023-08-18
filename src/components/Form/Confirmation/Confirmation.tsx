@@ -110,10 +110,8 @@ const Confirmation = () => {
           <AddOnInfo>
             <ul data-testid="addOnInformation">
               {formTotal.addOnPrice.map(([addOn, price]) => (
-                <li key={addOn}>
-                  <p data-testid={`${addOn}Price`}>
-                    {convertToTitleCase(addOn)}{' '}
-                  </p>
+                <li key={addOn} data-testid={`${addOn}Price`}>
+                  <p>{convertToTitleCase(addOn)} </p>
 
                   <p>
                     +${price}
