@@ -18,6 +18,10 @@ export const Button = styled.button`
 export const NextButton = styled(Button)`
   background-color: var(--denim);
   color: var(--white);
+
+  &:hover {
+    background-color: var(--button-active);
+  }
 `
 
 export const ConfirmButton = styled(Button)`
@@ -26,13 +30,17 @@ export const ConfirmButton = styled(Button)`
   padding: 0.65em 1.6em;
 
   @media screen and (${device.laptop}) {
-    padding: .65em 2em;
+    padding: 0.65em 2em;
   }
 `
 
 export const PreviousButton = styled(Button)`
   background-color: transparent;
   color: var(--grey);
+
+  &:hover {
+    color: var(--denim);
+  }
 
   @media screen and (${device.laptop}) {
     padding-left: 0;

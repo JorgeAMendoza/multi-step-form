@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     --sky-blue: #BEE2FD;
     --very-light-grey: #F8F9FF;
     --white: #FFFFFF;
+    --button-active: #164A8A;
   }
 
   html {
