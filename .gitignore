@@ -25,3 +25,4 @@ pixel-perfect
 *.njsproj
 *.sln
 *.sw?
+.vercel
