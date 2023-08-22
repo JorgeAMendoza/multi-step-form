@@ -28,7 +28,7 @@ const TextInput = (props: TextInputProps) => {
           {...field}
           type={props.type}
           placeholder={props.placeholder ? props.placeholder : ''}
-          id={`${props.name}Input}`}
+          id={`${props.name}Input`}
         />
       </InputContainer>
     </div>
