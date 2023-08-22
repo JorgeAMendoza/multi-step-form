@@ -6,6 +6,8 @@ env:
 on:
   pull_request:
     branches: [production]
+  push: 
+    branches: [production]
 
 jobs:
   linting-and-type-checking:
